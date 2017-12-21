@@ -9,9 +9,17 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/home.html',
       controller: 'LoginController as lc',
     })
+    .when('/login', {
+      templateUrl: '/views/templates/login.html',
+      controller: 'LoginController as lc',
+    })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
       controller: 'LoginController as lc'
+    })
+    .when('/about', {
+      templateUrl: '/views/templates/about.html',
+      controller: 'LoginController as lc',
     })
     .when('/user', {
       templateUrl: '/views/templates/user.html',

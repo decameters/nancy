@@ -1,4 +1,5 @@
-<div class="container">
+<div ng-include="'views/partials/nav1.html'"></div>
+<div class="main-container">
   <h1 class="lead">Register User</h1>
   <h2 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
   <form ng-submit="lc.registerUser()">
