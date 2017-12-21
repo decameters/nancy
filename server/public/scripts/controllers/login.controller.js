@@ -10,7 +10,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     vm.login = function() {
       console.log('LoginController -- login');
       if(vm.user.username === '' || vm.user.password === '') {
-        vm.message = "Enter your username and password!";
+        vm.message = "Enter your username and password, please.";
       } else {
         console.log('LoginController -- login -- sending to server...', vm.user);
         $http.post('/', vm.user).then(function(response) {
@@ -24,7 +24,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
           }
         }).catch(function(response){
           console.log('LoginController -- registerUser -- failure: ', response);
-          vm.message = "Wrong!!";
+          vm.message = "No user exists. Please register or try again.";
         });
       }
     };
@@ -32,7 +32,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     vm.registerUser = function() {
       console.log('LoginController -- registerUser');
       if(vm.user.username === '' || vm.user.password === '') {
-        vm.message = "Choose a username and password!";
+        vm.message = " You must register to login.";
       } else {
         console.log('LoginController -- registerUser -- sending to server...', vm.user);
         $http.post('/register', vm.user).then(function(response) {
