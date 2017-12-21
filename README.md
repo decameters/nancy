@@ -26,7 +26,10 @@ Steps to get the development environment running.
 CREATE TABLE "users" (
   "id" serial primary key,
   "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null
+  "password" varchar(240) not null,
+  "first_name" varchar(25),
+  "last_name" varchar(25),
+  "phone" bigint ***this might change***
 );
 ```
 
