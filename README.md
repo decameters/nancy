@@ -65,4 +65,4 @@ Add additional notes about how to deploy this on a live system
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Thanks to Scott Bromander and Kris Szafranski at Prime Digital Academy for the registration and authentication code. 
