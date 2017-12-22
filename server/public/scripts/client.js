@@ -30,18 +30,9 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/info', {
-      templateUrl: '/views/templates/info.html',
-      controller: 'InfoController',
-      resolve: {
-        getuser : function(UserService){
-          return UserService.getuser();
-        }
-      }
-    })
     .when('/itineraries', {
       templateUrl: '/views/templates/itineraries.html',
-      controller: 'UserController as uc',
+      controller: 'ItineraryController as ic',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -50,7 +41,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/contacts', {
       templateUrl: '/views/templates/contacts.html',
-      controller: 'UserController as uc',
+      controller: 'ContactController as cc',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -59,7 +50,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/lists', {
       templateUrl: '/views/templates/lists.html',
-      controller: 'UserController as uc',
+      controller: 'ToDoController as tc',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
