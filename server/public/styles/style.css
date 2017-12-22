@@ -4,31 +4,26 @@ body, html {
   font-size: 14px;
 }
 
-.instructions .container h1 {
-  font-size: 32px;
+.header h1 {
+  font-size: 75px;
   font-weight: 600;
 }
 
-.instructions {
-  background-color: eeeeee;
+.header {
+  background-color: #ffffff;
   color: #000000;
-  padding: 15px;
+  padding-top: 15px;
+  padding-left: 40px;
+  height: 150px;
 }
 
 #entryForm {
   margin-top: 14px;
 }
 
-#container {
-  margin-top: 10px;
-}
-
 .main-container {
-  padding: 15px;
-}
-
-.container p{
-  margin-top : 14px;
+  padding-top: 15px;
+  padding-left: 40px;
 }
 
 .message {
@@ -55,6 +50,7 @@ body, html {
   background-color: #000000;
   width: 100%;
   border-radius: 0px;
+  padding-left: 30px;
 }
 
 ul {
@@ -78,6 +74,14 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  text-decoration: underline;
-  color: #eee;
+  text-decoration: none;
+  color: greenyellow;
+}
+
+h1 a {
+  color: black;
+}
+h1 a:hover {
+  text-decoration: none;
+  color: lawngreen
 }

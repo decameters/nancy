@@ -39,6 +39,42 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
+    .when('/itineraries', {
+      templateUrl: '/views/templates/itineraries.html',
+      controller: 'UserController as uc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/contacts', {
+      templateUrl: '/views/templates/contacts.html',
+      controller: 'UserController as uc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/lists', {
+      templateUrl: '/views/templates/lists.html',
+      controller: 'UserController as uc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/about_auth', {
+      templateUrl: '/views/templates/about_auth.html',
+      controller: 'UserController as uc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });
