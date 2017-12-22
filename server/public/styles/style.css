@@ -5,6 +5,7 @@ body, html {
 }
 
 .header h1 {
+  text-decoration: none;
   font-size: 75px;
   font-weight: 600;
 }
@@ -78,10 +79,11 @@ li a:hover {
   color: greenyellow;
 }
 
-h1 a {
-  color: black;
+h1 > a {
+  text-decoration: none !important;
+  color: black !important;
 }
-h1 a:hover {
-  text-decoration: none;
-  color: lawngreen
+
+h1 > a:hover {
+  color: lawngreen !important;
 }
