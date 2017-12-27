@@ -73,10 +73,18 @@ li a {
   text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
 li a:hover {
   text-decoration: none;
   color: greenyellow;
+}
+
+a {
+  text-decoration: none !important;
+  color: black;
+}
+
+a:hover {
+  color: lawngreen;
 }
 
 h1 > a {
