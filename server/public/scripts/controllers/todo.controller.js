@@ -1,4 +1,4 @@
-myApp.controller('ToDoController', function($http, $location, ToDoService) {
+myApp.controller('ToDoController', function(ToDoService) {
     console.log('ToDoController created');
     var vm = this;
 

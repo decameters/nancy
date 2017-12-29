@@ -1,29 +1,41 @@
--- CREATE TABLE "users" (
--- 	"id" serial PRIMARY KEY NOT NULL,
--- 	"username" varchar NOT NULL UNIQUE,
--- 	"password" varchar NOT NULL,
--- 	"first_name" varchar NOT NULL,
--- 	"last_name" varchar NOT NULL,
--- 	"phone" bigint NOT NULL
--- );
+CREATE DATABASE nancy;
+
+CREATE TABLE "users" (
+	"id" serial NOT NULL,
+	"username" serial NOT NULL UNIQUE,
+	"password" serial NOT NULL UNIQUE,
+	"first_name" varchar NOT NULL,
+	"last_name" varchar NOT NULL,
+	"phone" int(11) NOT NULL,
+	CONSTRAINT users_pk PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
 
 
 
--- CREATE TABLE "itinerary_item" (
--- 	"id" serial PRIMARY KEY NOT NULL,
--- 	"tripname_id" int NOT NULL,
--- 	"date" DATE NOT NULL,
--- 	"location_id" int NOT NULL,
--- 	"contact_id" int NOT NULL
--- );
+CREATE TABLE "itinerary_item" (
+	"id" serial NOT NULL,
+	"tripname_id" int NOT NULL,
+	"date" DATE NOT NULL,
+	"location_id" int NOT NULL,
+	"contact_id" int NOT NULL,
+	CONSTRAINT itinerary_item_pk PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
 
 
 
--- CREATE TABLE "tripnames" (
--- 	"id" serial PRIMARY KEY NOT NULL,
--- 	"name" varchar NOT NULL UNIQUE,
--- 	"created_id" varchar NOT NULL
--- );
+CREATE TABLE "tripnames" (
+	"id" serial NOT NULL,
+	"name" varchar NOT NULL UNIQUE,
+	"link" varchar,
+	"created_id" varchar NOT NULL,
+	CONSTRAINT tripnames_pk PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
 
 
 

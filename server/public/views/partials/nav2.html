@@ -1,8 +1,9 @@
-<div class="navbar">
+<div class="navbar" ng-controller="UserController as uc">
     <ul>
       <li><a href="#/itineraries">Itineraries</a></li>
       <li><a href="#/contacts">Contacts</a></li>
       <li><a href="#/lists">Lists</a></li>
       <li><a href="#/about_auth">About</a></li>
+      <li><a ng-click="uc.userService.logout()">Logout</a></li>
     </ul>
 </div>
