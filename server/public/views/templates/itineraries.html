@@ -1,6 +1,7 @@
 <div ng-include="'views/partials/nav2.html'"></div>
   <div class="main-container">
-    <h2>add a new itinerary</h2>
+    <h2>itineraries</h2>
+    <h3>add a new itinerary</h3>
     <form novalidate class="simple-form">
       <input type="text" ng-model="ic.newItinerary.name" placeholder="name your itinerary" />
       <input type="text" ng-model="ic.newItinerary.link" placeholder="google maps share link" />
@@ -8,5 +9,16 @@
       <br>
       <input type="submit" ng-click="ic.addNewItinerary(ic.newItinerary)" value="add itinerary" />
     </form>
+    <br>
+    <h3>or choose an existing itinerary</h3>
+    
+        <select ng-options="itinerary.id as itinerary.name for itinerary in ic.itineraryArray.list track by itinerary.id" ng-model="selected">{{itinerary}}</select>
+        <!-- <select ng-repeat="itinerary in ic.itineraryArray">{{itinerary.name}}</select> -->
+
+        <!-- <input type="name" ng-model="vm.newPet.name" placeholder="Pet's Name">
+        <input type="name" ng-model="vm.newPet.breed" placeholder="Breed">
+        <input type="name" ng-model="vm.newPet.color" placeholder="Color"> -->
+        <!-- <button ng-click="vm.addNewPet(vm.newPet)">Add New Pet</button> -->
+    
   </div>
 </div>

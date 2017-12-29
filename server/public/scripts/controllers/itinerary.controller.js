@@ -3,5 +3,8 @@ myApp.controller('ItineraryController', ['ItineraryService', function(ItineraryS
     var vm = this;
     
     vm.addNewItinerary = ItineraryService.addNewItinerary;
-    
+
+    vm.itineraryArray = ItineraryService.itineraryArray;
+    // vm.getAllItineraries = ItineraryService.getAllItineraries;
+    ItineraryService.getAllItineraries();
 }]);

@@ -3,6 +3,26 @@ var router = express.Router();
 var passport = require('passport');
 var pool = require('../modules/pool.js');
 
+// get all itineraries
+router.get('/', function (req, res) {
+    pool.connect(function (errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`SELECT * FROM "tripnames";`, function (errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.send(result.rows);
+                }
+            })
+        }
+    })
+}); // end get all itineraries
+
 // post trip name to database
 router.post('/add', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done){

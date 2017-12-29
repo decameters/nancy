@@ -95,3 +95,7 @@ h1 > a {
 h1 > a:hover {
   color: lawngreen !important;
 }
+
+h2 {
+  text-decoration: underline;
+}
