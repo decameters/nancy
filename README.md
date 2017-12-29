@@ -20,7 +20,7 @@ Link to software that is required to install the app (e.g. node).
 
 ### Installing
 
-Steps to get the development environment running.
+Copy and paste database.sql file to set up basic database structure.
 
 ```sql
 CREATE TABLE "users" (
@@ -60,7 +60,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* Name of author(s)
+* Liz Elton
 
 
 ## Acknowledgments
