@@ -39,6 +39,15 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
+    .when('/itinerary-detail', {
+      templateUrl: '/views/templates/itinerary-detail.html',
+      controller: 'ItineraryController as ic',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
     .when('/contacts', {
       templateUrl: '/views/templates/contacts.html',
       controller: 'ContactController as cc',
@@ -57,8 +66,8 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/about_auth', {
-      templateUrl: '/views/templates/about_auth.html',
+    .when('/about-auth', {
+      templateUrl: '/views/templates/about-auth.html',
       controller: 'UserController as uc',
       resolve: {
         getuser : function(UserService){

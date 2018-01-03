@@ -13,6 +13,7 @@
     <h3>or choose an existing itinerary</h3>
     
         <select ng-options="itinerary.id as itinerary.name for itinerary in ic.itineraryArray.list track by itinerary.id" ng-model="selected">{{itinerary}}</select>
+        <button ng-click="">choose itinerary</button>
         <!-- <select ng-repeat="itinerary in ic.itineraryArray">{{itinerary.name}}</select> -->
 
         <!-- <input type="name" ng-model="vm.newPet.name" placeholder="Pet's Name">

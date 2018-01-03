@@ -1,0 +1,27 @@
+<div ng-include="'views/partials/nav2.html'"></div>
+  <div class="main-container">
+    <h2>itinerary / intinerary name</h2>
+
+    {{ic}}
+
+    <form novalidate class="simple-form">
+        <input type="date" ng-model="ic.newItem.date" placeholder="date" />
+        <input type="text" ng-model="ic.newItem.city_state" placeholder="city / state" />
+        <input type="text" ng-model="ic.newItem.name" placeholder="destination / venue" />
+        <input type="text" ng-model="ic.newItem.address" placeholder="address" />
+        <input type="text" ng-model="ic.newItem.drivetime" placeholder="est drive time" />
+        <input type="text" ng-model="ic.newContact.name" placeholder="contact name" />
+        <input type="text" ng-model="ic.newContact.email" placeholder="contact email" />
+        <input type="text" ng-model="ic.newContact.phone" placeholder="contact phone" />
+        <br>
+        <br>
+        <input type="submit" ng-click="ic.addNewItem(ic.newItem)" value="add itinerary" />
+    </form>
+
+    <ul ng-repeat="item in ic.item.list">
+        <li>{{item.date | date:'MM-dd-yyyy'}}, {{item.city_state}}, {{item.destination}}, {{item.address}},
+            {{item.drivetime}}, {{item.first_name}} {{item.last_name}}, {{item.email}},
+            {{item.phone}}</li>
+    </ul>
+
+</div>
