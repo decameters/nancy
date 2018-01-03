@@ -1,10 +1,19 @@
 <div ng-include="'views/partials/nav2.html'"></div>
   <div class="main-container">
-    <h2>lists</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi enim, rutrum ac dignissim eget, efficitur vitae lacus. Aliquam porttitor magna non tincidunt malesuada. Curabitur a libero vel nunc gravida sollicitudin id at libero. Vivamus et nisi ultrices, ultricies diam eget, dictum arcu. Morbi elementum feugiat est id faucibus. Ut fringilla ultrices felis, eu mollis purus ultrices vel. Nam feugiat cursus odio vel ultrices. Nullam erat sapien, porttitor eu sapien egestas, blandit varius libero.
 
-            Cras augue nulla, tincidunt non ipsum non, bibendum ullamcorper magna. Fusce aliquam purus nec sodales mollis. Sed dolor lacus, rutrum sit amet iaculis at, imperdiet ut dolor. Maecenas at risus augue. Nulla facilisi. In interdum auctor maximus. Fusce et augue id turpis mollis pretium. Nullam accumsan hendrerit quam, ac dapibus nibh molestie vel.
-        </p>
+    {{tc}}
+    <h2>lists</h2>
+    <h3>create a new list</h3>
+    <form novalidate class="simple-form">
+        <input type="text" ng-model="tc.newTodo.name" placeholder="name your list" />
+        <br>
+        <br>
+        <input type="submit" ng-click="tc.addNewTodo(tc.newTodo)" value="create new list" />
+      </form>
+      <br>
+      <h3>or choose an existing list</h3>
+      
+      <select ng-options="todo.id as todo.name for todo in tc.todoArray.list track by todo.id" ng-model="selected">{{todo}}</select>
+          <button ng-click="">choose list</button>
   </div>
 </div>
