@@ -1,6 +1,11 @@
-<div class="header">
+<div class="header" ng-controller="UserController as uc">
 
-        <h1><a href="#/user">NANCY</a></h1>
+        <div class="headercontainer">
+                <h1><a href="#/user">NANCY</a></h1>
+                <h4 class="col-md-1" ng-show="uc.userObject.userName" >hi there, {{ uc.userObject.userName }}!</h4>
+                <div ng-show="!uc.userObject.userName" ></div>
+                <!-- <h3>welcome, {{uc.userObject.userName || "friend"}}</h3> -->
+        </div>
 
 
 </div>

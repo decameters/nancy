@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT * FROM "tripnames";`, function (errorMakingQuery, result){
+            client.query(`SELECT * FROM "tripnames" WHERE created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -52,8 +52,9 @@ router.get('/item', function (req, res) {
             res.sendStatus(500);
         } else {
             client.query(`SELECT * FROM itinerary_item
-            JOIN contacts ON contacts.id = itinerary_item.contact_id
-            JOIN tripnames ON tripnames.id = itinerary_item.trip_id;`, function (errorMakingQuery, result){
+            LEFT JOIN contacts ON contacts.id = itinerary_item.contact_id
+            LEFT JOIN tripnames ON tripnames.id = itinerary_item.trip_id
+            WHERE created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);

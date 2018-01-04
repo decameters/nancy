@@ -99,3 +99,7 @@ h1 > a:hover {
 h2 {
   text-decoration: underline;
 }
+
+.headercontainer {
+  display: inline-flex;
+}

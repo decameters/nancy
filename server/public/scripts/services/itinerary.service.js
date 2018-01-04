@@ -49,7 +49,7 @@ myApp.service('ItineraryService', function ($http, $location) {
             newItem.name = '';
             newItem.address = '';
             newItem.drivetime = '';
-            // self.getAllItems();
+            self.getAllItems();
         })
     } // end add new itinerary item
 

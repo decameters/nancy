@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT * FROM "listnames";`, function (errorMakingQuery, result){
+            client.query(`SELECT * FROM "listnames" WHERE created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -44,16 +44,38 @@ router.post('/add', function (req, res) {
     })
 }); // end post todo name to database
 
-// // get all itinerary items
-// router.get('/item', function (req, res) {
+// get all todo items
+router.get('/getlist', function (req, res) {
+    pool.connect(function (errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`SELECT * FROM list_items
+            JOIN listnames ON listnames.id = list_items.name_id
+            WHERE listnames.id = $1;`, [req.query.listTodo], function (errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.send(result.rows);
+                }
+            })
+        }
+    })
+}); // end get all todo items
+
+// // get all todo items
+// router.get('/items', function (req, res) {
 //     pool.connect(function (errorConnectingToDatabase, client, done){
 //         if(errorConnectingToDatabase){
 //             console.log('Error connecting to database', errorConnectingToDatabase);
 //             res.sendStatus(500);
 //         } else {
-//             client.query(`SELECT * FROM itinerary_item
-//             JOIN contacts ON contacts.id = itinerary_item.contact_id
-//             JOIN tripnames ON tripnames.id = itinerary_item.trip_id;`, function (errorMakingQuery, result){
+//             client.query(`SELECT * FROM list_items
+//             JOIN listnames ON listnames.id = list_items.name_id
+//             WHERE listnames.id = $1;`, [WHAT GOES HERE], function (errorMakingQuery, result){
 //                 done();
 //                 if(errorMakingQuery){
 //                     console.log('error making query', errorMakingQuery);
@@ -64,29 +86,28 @@ router.post('/add', function (req, res) {
 //             })
 //         }
 //     })
-// }); // end get all itinerary items
+// }); // end get all todo items
 
-// // post itinerary item to database
-// router.post('/additem', function (req, res) {
-//     pool.connect(function (errorConnectingToDatabase, client, done){
-//         if(errorConnectingToDatabase){
-//             console.log('Error connecting to database', errorConnectingToDatabase);
-//             res.sendStatus(500);
-//         } else {
-//             client.query(`INSERT INTO "itinerary_item"
-//             (date, city_state, destination, address, drivetime)
-//             VALUES ($1, $2, $3, $4, $5);`,
-//             [req.body.date, req.body.city_state, req.body.name, req.body.address, req.body.drivetime], function (errorMakingQuery, result){
-//                 done();
-//                 if(errorMakingQuery){
-//                     console.log('error making query', errorMakingQuery);
-//                     res.sendStatus(500);
-//                 } else {
-//                     res.sendStatus(201);
-//                 }
-//             })
-//         }
-//     })
-// }); // end post itinerary item to database
+
+// post todo item to database
+router.post('/additem', function (req, res) {
+    pool.connect(function (errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`INSERT INTO "list_items" (name_id, item, quantity)
+            VALUES ($1, $2, $3)`, [req.body.date, req.body.item, req.body.quantity], function (errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(201);
+                }
+            })
+        }
+    })
+}); // end post todo item to database
 
 module.exports = router;

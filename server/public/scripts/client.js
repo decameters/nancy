@@ -23,7 +23,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
-      controller: 'UserController as uc',
+      controller: 'LoginController',
       resolve: {
         getuser : function(UserService){
           return UserService.getuser();
@@ -59,6 +59,15 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/lists', {
       templateUrl: '/views/templates/lists.html',
+      controller: 'ToDoController as tc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/list-detail', {
+      templateUrl: '/views/templates/list-detail.html',
       controller: 'ToDoController as tc',
       resolve: {
         getuser : function(UserService){
