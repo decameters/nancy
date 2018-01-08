@@ -112,6 +112,6 @@ h2 {
   top: 32%;
 }
 
-/* .nancy-header:hover {
-  background: url(nancy_green.png);
-} */
+.nancy-header:hover {
+  background: url(nancy_greener.png);
+}
