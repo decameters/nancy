@@ -102,6 +102,14 @@ h2 {
 
 .headercontainer {
   display: inline-flex;
+  height: 120px;
+}
+
+#header-text {
+  color: lawngreen;
+  position: relative;
+  padding-left: 30px;
+  top: 32%;
 }
 
 /* .nancy-header:hover {
