@@ -2,6 +2,8 @@
   <div class="main-container">
     <h2>lists / list name</h2>
 
+    {{tc}}
+
     <form novalidate class="simple-form">
         <input type="text" ng-model="tc.newTodoItem.item" placeholder="item" />
         <input type="number" ng-model="tc.newTodoItem.quantity" placeholder="quantity" />
@@ -23,12 +25,11 @@
             <tbody>
                 <!-- make this a thing that actually makes sense -->
                 <!-- editable fields -->
-                <tr ng-repeat="item in ic.item.list">
-                    <td>{{item.date | date:'MM-dd-yyyy'}}</td>
-                    <td>{{item.city_state}}</td>
-                    <td>{{item.destination}}</td>
+                <tr ng-repeat="item in tc.todo.list">
+                    <td>{{item.is_packed}}</td>
+                    <td>{{item.item}}</td>
+                    <td>{{item.quantity}}</td>
                     <td><input type="checkbox"></td>
-                    <td><button class="btn" ng-click="tc.editItem(item)">Edit</button></td>
                     <td><button class="btn" ng-click="tc.deleteItem(buy)">Delete</button></td>  
                     <!-- make these buttons work           -->
                 </tr>

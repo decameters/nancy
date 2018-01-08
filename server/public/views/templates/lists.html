@@ -14,7 +14,9 @@
       <h3>or choose an existing list</h3>
       
       <select ng-options="todo.id as todo.name for todo in tc.todoArray.list track by todo.id" ng-model="tc.listTodo">{{todo}}</select>
-          <button ng-click="tc.getList(tc.listTodo)">choose list</button>
+      <a class="btn btn-primary" ng-href="#/list-detail/{{tc.listTodo}}">choose list</a>
+      <!-- <button ng-href="#/list-detail/{{tc.listTodo}}">CLICK</button>
+      <button ng-click="tc.getList(tc.listTodo)">choose list</button> -->
           {{tc.listTodo}}
 
   </div>

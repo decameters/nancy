@@ -66,6 +66,29 @@ router.get('/getlist', function (req, res) {
     })
 }); // end get all todo items
 
+// get PARAMS***
+router.get('/listdetails', function (req, res) {
+    var listId = req.query.listId;
+    pool.connect(function (errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`SELECT * FROM list_items
+            JOIN listnames ON listnames.id = list_items.name_id
+            WHERE listnames.id = $1;`, [listId], function (errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.send(result.rows);
+                }
+            })
+        }
+    })
+}); // end get PARAMS***
+
 // // get all todo items
 // router.get('/items', function (req, res) {
 //     pool.connect(function (errorConnectingToDatabase, client, done){

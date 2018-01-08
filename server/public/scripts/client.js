@@ -66,7 +66,7 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/list-detail', {
+    .when('/list-detail/:listId', {      
       templateUrl: '/views/templates/list-detail.html',
       controller: 'ToDoController as tc',
       resolve: {

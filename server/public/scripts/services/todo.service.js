@@ -8,6 +8,8 @@ myApp.service('ToDoService', function ($http, $location) {
 
     self.listTodo = { };
 
+    self.todo = { list: {} };
+
     // self.Todo = { list: [] };
 
     // add new todo
@@ -64,18 +66,31 @@ myApp.service('ToDoService', function ($http, $location) {
     //     })
     // } // end get all itinerary items
 
-    self.getList = function (listTodo) {
-        console.log('get list button clicked');
-        console.log(listTodo);
+    // self.getList = function (listTodo) {
+    //     console.log('get list button clicked');
+    //     console.log(listTodo);
         
+    //     $http({
+    //         method: 'GET',
+    //         url: '/todo/getlist',
+    //         params: {listTodo}
+    //     }).then(function (response){
+    //         console.log('response', response);
+    //         self.thisTodo.list = response.data;
+    //     })
+    // }
+
+    self.getListDetails = function (listId) {
         $http({
             method: 'GET',
-            url: '/todo/getlist',
-            params: {listTodo}
-        }).then(function (response){
-            console.log('response', response);
-            self.thisTodo.list = response.data;
-        })
+            url: '/todo/listdetails',
+            params: {
+                listId: listId
+            }
+        }).then(function(response){
+            console.log('response.data');
+            self.todo.list = response.data;
+        });
     }
 
 });
