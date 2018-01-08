@@ -108,10 +108,15 @@ h2 {
 #header-text {
   color: lawngreen;
   position: relative;
-  padding-left: 30px;
+  padding-left: 10px;
   top: 32%;
 }
 
+.nancy-header {
+  height: 120px;
+}
+
 .nancy-header:hover {
-  background: url(nancy_greener.png);
+  background: url(nancy_greeeen.png);
+  height: 120px;
 }
