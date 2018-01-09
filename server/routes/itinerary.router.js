@@ -113,4 +113,25 @@ router.get('/itinerarydetails', function (req, res) {
     })
 }); // end get PARAMS***
 
+// get PARAMS***
+router.get('/itinerarynames', function (req, res) {
+    var itinId = req.query.itinId;
+    pool.connect(function (errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`SELECT * FROM tripnames where id=$1;`, [itinId], function (errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.send(result.rows);
+                }
+            })
+        }
+    })
+}); // end get PARAMS***
+
 module.exports = router;

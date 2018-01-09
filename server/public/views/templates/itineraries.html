@@ -21,11 +21,20 @@
         <input type="name" ng-model="vm.newPet.color" placeholder="Color"> -->
         <!-- <button ng-click="vm.addNewPet(vm.newPet)">Add New Pet</button> -->
 
-        <table class="table table-striped table-bordered">
+        <table class="table table-bordered table-hover">
+                <thead>
+                        <tr>
+                            <th>ITINERARIES</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
             <tbody>
                 <tr ng-repeat="itinerary in ic.itineraryArray.list">
                     <td>{{itinerary.name}}</td>
                     <td><a class="btn-sm" ng-href="#/itinerary-detail/{{itinerary.id}}">choose itinerary</a></td>
+                    <td><button class="btn-sm" ng-click="vm.editItem(item)">edit itinerary</button></td>
                     <td><button class="btn-sm" ng-click="tc.deleteItem(buy)">delete itinerary</button></td>
                     <!-- make these buttons work           -->
                 </tr>

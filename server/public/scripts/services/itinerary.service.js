@@ -6,7 +6,9 @@ myApp.service('ItineraryService', function ($http, $location) {
 
     self.item = { list: [] };
 
-    self.itinerary = { list: {} };
+    self.itinerary = { list: [] };
+
+    self.itinName = { list: [] }
 
     // add new itinerary
     self.addNewItinerary = function (newItinerary) {
@@ -77,5 +79,28 @@ myApp.service('ItineraryService', function ($http, $location) {
             self.itinerary.list = response.data;
         });
     } // end get all itinerary details for details view
+
+    // get itin name on details view
+    self.getItineraryName = function(itinId) {
+        $http({
+            method: 'GET',
+            url: 'itinerary/itinerarynames',
+            params: {
+                itinId: itinId
+            }
+        }).then(function(response){
+            console.log('response', response);
+            self.itinName.list = response.data;
+        });
+    } // end get itin name on details view
+
+    self.toggleDescription = function(card) {
+        card.showDescription = !card.showDescription;
+        if(card.showDescription == true) {
+            // increase views
+            card.views++;
+        }
+        
+    };
 
 });
