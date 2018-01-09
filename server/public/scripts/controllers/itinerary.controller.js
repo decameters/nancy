@@ -1,17 +1,17 @@
-myApp.controller('ItineraryController', ['ItineraryService', function(ItineraryService) {
-    console.log('ItineraryController created');
+myApp.controller('ItineraryController', ['ItineraryService', '$routeParams', function(ItineraryService, $routeParams) {
+
     var vm = this;
 
-    vm.message = ItineraryService.message;
-
     vm.itineraryArray = ItineraryService.itineraryArray;
+    vm.itinerary = ItineraryService.itinerary;
     vm.item = ItineraryService.item;
-    
+
     vm.addNewItinerary = ItineraryService.addNewItinerary;
     vm.addNewItem = ItineraryService.addNewItem;
 
-  
-    // vm.getAllItineraries = ItineraryService.getAllItineraries;
-    ItineraryService.getAllItineraries();
     ItineraryService.getAllItems();
+    ItineraryService.getAllItineraries();
+    ItineraryService.getItineraryDetails($routeParams.itinId);
+    // vm.getAllItineraries = ItineraryService.getAllItineraries;
+
 }]);

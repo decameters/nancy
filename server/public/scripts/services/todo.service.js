@@ -3,13 +3,12 @@ myApp.service('ToDoService', function ($http, $location) {
     var self = this;
 
     self.todoArray = { list: [] };
-    // self.currentTodo = { list: [] };
-    self.thisTodo = { list: [] };
-
-    self.listTodo = { };
 
     self.todo = { list: {} };
 
+    // self.currentTodo = { list: [] };
+    // self.thisTodo = { list: [] };
+    // self.listTodo = { };
     // self.Todo = { list: [] };
 
     // add new todo
@@ -88,7 +87,7 @@ myApp.service('ToDoService', function ($http, $location) {
                 listId: listId
             }
         }).then(function(response){
-            console.log('response.data');
+            console.log('response', response);
             self.todo.list = response.data;
         });
     }

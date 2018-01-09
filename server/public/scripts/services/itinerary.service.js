@@ -2,12 +2,11 @@ myApp.service('ItineraryService', function ($http, $location) {
     console.log('ItineraryService Loaded');
     var self = this;
 
-    self.message = "why why";
-    // self.newItinerary = {};
-
     self.itineraryArray = { list: [] };
 
     self.item = { list: [] };
+
+    self.itinerary = { list: {} };
 
     // add new itinerary
     self.addNewItinerary = function (newItinerary) {
@@ -36,7 +35,7 @@ myApp.service('ItineraryService', function ($http, $location) {
         })
     } // end get all itineraries
 
-    // add new itinerary item
+    // add new itinerary item to details view
     self.addNewItem = function (newItem) {
         console.log(newItem);
         $http({
@@ -51,9 +50,9 @@ myApp.service('ItineraryService', function ($http, $location) {
             newItem.drivetime = '';
             self.getAllItems();
         })
-    } // end add new itinerary item
+    } // end add new itinerary item to details view
 
-    // get all itinerary items
+    // get all itinerary items on details view
     self.getAllItems = function () {
         console.log('in getAllItems');
         $http({
@@ -63,6 +62,20 @@ myApp.service('ItineraryService', function ($http, $location) {
             console.log('response', response);
             self.item.list = response.data;
         })
-    } // end get all itinerary items
+    } // end get all itinerary items on details view
+
+    // get itinerary details for details view
+    self.getItineraryDetails = function (itinId) {
+        $http({
+            method: 'GET',
+            url: '/itinerary/itinerarydetails',
+            params: {
+                itinId: itinId
+            }
+        }).then(function(response){
+            console.log('response', response);
+            self.itinerary.list = response.data;
+        });
+    } // end get all itinerary details for details view
 
 });

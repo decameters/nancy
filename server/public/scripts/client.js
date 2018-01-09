@@ -39,7 +39,7 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/itinerary-detail', {
+    .when('/itinerary-detail/:itinId', {
       templateUrl: '/views/templates/itinerary-detail.html',
       controller: 'ItineraryController as ic',
       resolve: {

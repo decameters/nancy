@@ -10,16 +10,27 @@
       <input type="submit" ng-click="ic.addNewItinerary(ic.newItinerary)" value="create new itinerary" />
     </form>
     <br>
-    <h3>or choose an existing itinerary</h3>
+    <h3>add to or edit an itinerary</h3>
     
-        <select ng-options="itinerary.id as itinerary.name for itinerary in ic.itineraryArray.list track by itinerary.id" ng-model="selected">{{itinerary}}</select>
-        <button ng-click="">choose itinerary</button>
+        <!-- <select ng-options="itinerary.id as itinerary.name for itinerary in ic.itineraryArray.list track by itinerary.id" ng-model="selected">{{itinerary}}</select>
+        <button ng-click="">choose itinerary</button> -->
         <!-- <select ng-repeat="itinerary in ic.itineraryArray">{{itinerary.name}}</select> -->
 
         <!-- <input type="name" ng-model="vm.newPet.name" placeholder="Pet's Name">
         <input type="name" ng-model="vm.newPet.breed" placeholder="Breed">
         <input type="name" ng-model="vm.newPet.color" placeholder="Color"> -->
         <!-- <button ng-click="vm.addNewPet(vm.newPet)">Add New Pet</button> -->
+
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr ng-repeat="itinerary in ic.itineraryArray.list">
+                    <td>{{itinerary.name}}</td>
+                    <td><a class="btn-sm" ng-href="#/itinerary-detail/{{itinerary.id}}">choose itinerary</a></td>
+                    <td><button class="btn-sm" ng-click="tc.deleteItem(buy)">delete itinerary</button></td>
+                    <!-- make these buttons work           -->
+                </tr>
+            </tbody>
+        </table>
     
   </div>
 </div>

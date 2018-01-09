@@ -90,4 +90,27 @@ router.post('/additem', function (req, res) {
     })
 }); // end post itinerary item to database
 
+// get PARAMS***
+router.get('/itinerarydetails', function (req, res) {
+    var itinId = req.query.itinId;
+    pool.connect(function (errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`SELECT * FROM itinerary_item
+            JOIN tripnames ON tripnames.id = itinerary_item.trip_id
+            WHERE trip_id = $1;`, [itinId], function (errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.send(result.rows);
+                }
+            })
+        }
+    })
+}); // end get PARAMS***
+
 module.exports = router;
