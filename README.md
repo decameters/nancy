@@ -1,10 +1,14 @@
-# Name of Project
+# NANCY
 
 One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
 
 ## Built With
 
-List technologies and frameworks here
+* PostgreSQL
+* Express
+* Node.js
+* AngularJS
+* Bootstrap
 
 ## Getting Started
 
@@ -65,4 +69,4 @@ Add additional notes about how to deploy this on a live system
 
 ## Acknowledgments
 
-* Thanks to Scott Bromander and Kris Szafranski at Prime Digital Academy for the registration and authentication code. 
+* Thank you to Scott Bromander and Kris Szafranski at Prime Digital Academy for the registration and authentication code. 
