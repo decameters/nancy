@@ -108,6 +108,7 @@ h2 {
 #header-text {
   color: lawngreen;
   position: relative;
+  text-decoration: underline;
   padding-left: 10px;
   top: 32%;
 }
@@ -119,4 +120,14 @@ h2 {
 .nancy-header:hover {
   background: url(nancy_greeeen.png);
   height: 120px;
+}
+
+.btn-sm {
+  background-color: lawngreen;
+  color: black;
+}
+
+.btn-sm:hover {
+  background-color: lawngreen;
+  color: black;
 }

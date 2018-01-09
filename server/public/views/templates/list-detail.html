@@ -26,7 +26,8 @@
                 <!-- make this a thing that actually makes sense -->
                 <!-- editable fields -->
                 <tr ng-repeat="item in tc.todo.list">
-                    <td>{{item.is_packed}}</td>
+                    <td><input type="checkbox">{{item.is_packed}}</td>
+                    <!-- <td>{{item.is_packed}}</td> -->
                     <td>{{item.item}}</td>
                     <td>{{item.quantity}}</td>
                     <td><input type="checkbox"></td>

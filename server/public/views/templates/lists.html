@@ -2,6 +2,7 @@
   <div class="main-container">
 
     {{tc}}
+    {{tc.todo.id}}
     <h2>lists</h2>
     <h3>create a new list</h3>
     <form novalidate class="simple-form">
@@ -11,13 +12,25 @@
         <input type="submit" ng-click="tc.addNewTodo(tc.newTodo)" value="create new list" />
       </form>
       <br>
-      <h3>or choose an existing list</h3>
+      <h3>choose a list to add to or edit</h3>
       
-      <select ng-options="todo.id as todo.name for todo in tc.todoArray.list track by todo.id" ng-model="tc.listTodo">{{todo}}</select>
-      <a class="btn btn-primary" ng-href="#/list-detail/{{tc.listTodo}}">choose list</a>
+      <!-- <select ng-options="todo.id as todo.name for todo in tc.todoArray.list track by todo.id" ng-model="tc.listTodo">{{todo}}</select>
+      <a class="btn-sm" ng-href="#/list-detail/{{tc.listTodo}}">choose list</a> -->
       <!-- <button ng-href="#/list-detail/{{tc.listTodo}}">CLICK</button>
       <button ng-click="tc.getList(tc.listTodo)">choose list</button> -->
-          {{tc.listTodo}}
+          <!-- {{tc.listTodo}} -->
 
+          <table class="table table-striped table-bordered">
+              <tbody>
+                  <!-- make this a thing that actually makes sense -->
+                  <!-- editable fields -->
+                  <tr ng-repeat="todo in tc.todoArray.list">
+                      <td>{{todo.name}}</td>
+                      <td><a class="btn-sm" ng-href="#/list-detail/{{todo.id}}">choose list</a></td>
+                      <td><button class="btn-sm" ng-click="tc.deleteItem(buy)">delete list</button></td>
+                      <!-- make these buttons work           -->
+                  </tr>
+              </tbody>
+          </table>
   </div>
 </div>
