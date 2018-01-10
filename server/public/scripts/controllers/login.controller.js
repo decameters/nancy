@@ -38,7 +38,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         $http.post('/register', vm.user).then(function(response) {
           console.log('LoginController -- registerUser -- success');
           //ALERT/modal saying register worked
-          $location.path('/home');
+          $location.path('/login');
         }).catch(function(response) {
           console.log('LoginController -- registerUser -- error');
           vm.message = "Please try again."
