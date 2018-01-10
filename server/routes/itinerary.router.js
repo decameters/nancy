@@ -54,7 +54,7 @@ router.get('/item', function (req, res) {
             client.query(`SELECT * FROM itinerary_item
             LEFT JOIN contacts ON contacts.id = itinerary_item.contact_id
             LEFT JOIN tripnames ON tripnames.id = itinerary_item.trip_id
-            WHERE created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
+            WHERE tripnames.created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -67,17 +67,21 @@ router.get('/item', function (req, res) {
     })
 }); // end get all itinerary items
 
-// post itinerary item to database
+// post itinerary-detail item to database
 router.post('/additem', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done){
         if(errorConnectingToDatabase){
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`INSERT INTO "itinerary_item"
-            (date, city_state, destination, address, drivetime)
-            VALUES ($1, $2, $3, $4, $5);`,
-            [req.body.date, req.body.city_state, req.body.name, req.body.address, req.body.drivetime], function (errorMakingQuery, result){
+            client.query(`WITH new_contact AS (
+                INSERT INTO "contacts" (person, email, phone, created_id)
+                VALUES ($1, $2, $3, $4)
+                RETURNING id)
+                INSERT INTO "itinerary_item" (trip_id, date, city_state, destination, address, drivetime, contact_id)
+                VALUES ($5, $6, $7, $8, $9, $10, (SELECT id FROM new_contact));`,
+            [req.body.person, req.body.email, req.body.phone, req.user.id, req.body.itinerary, req.body.date, req.body.city_state, req.body.name, req.body.address, req.body.drivetime],
+            function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -88,7 +92,7 @@ router.post('/additem', function (req, res) {
             })
         }
     })
-}); // end post itinerary item to database
+}); // end post itinerary-detail item to database
 
 // get PARAMS***
 router.get('/itinerarydetails', function (req, res) {
@@ -100,6 +104,7 @@ router.get('/itinerarydetails', function (req, res) {
         } else {
             client.query(`SELECT * FROM itinerary_item
             JOIN tripnames ON tripnames.id = itinerary_item.trip_id
+            JOIN contacts ON contacts.id = itinerary_item.contact_id
             WHERE trip_id = $1;`, [itinId], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
@@ -112,6 +117,7 @@ router.get('/itinerarydetails', function (req, res) {
         }
     })
 }); // end get PARAMS***
+// add user.id so only theirs show up
 
 // get PARAMS***
 router.get('/itinerarynames', function (req, res) {

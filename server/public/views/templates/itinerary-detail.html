@@ -9,12 +9,12 @@
         <input type="text" ng-model="ic.newItem.address" placeholder="address" />
         <input type="text" ng-model="ic.newItem.drivetime" placeholder="est drive time" />
         <br>
-        <input type="text" ng-model="ic.newContact.name" placeholder="contact name" />
-        <input type="email" ng-model="ic.newContact.email" placeholder="contact email" />
-        <input type="number" ng-model="ic.newContact.phone" placeholder="contact phone" />
+        <input type="text" ng-model="ic.newItem.person" placeholder="contact name" />
+        <input type="email" ng-model="ic.newItem.email" placeholder="contact email" />
+        <input type="number" ng-model="ic.newItem.phone" placeholder="contact phone" />
         <br>
         <br>
-        <input class="btn-sm" type="submit" ng-click="ic.addNewItem(ic.newItem)" value="add to itinerary" />
+        <input class="btn-sm" type="submit" ng-click="ic.addNewItem(ic.newItem, ic.currentItineraryId)" value="add to itinerary" />
         <a class="btn-sm" target="_blank" ng-href="{{ic.itinName.list[0].link}}">GOOGLE MAP</a>
     </form>
     <br>
@@ -40,7 +40,7 @@
                     <td>{{item.destination}}</td>
                     <td>{{item.address}}</td>
                     <td>{{item.drivetime}}</td>
-                    <td>{{item.name}}</td>
+                    <td>{{item.person}}</td>
                     <td>{{item.email}}</td>
                     <td>{{item.phone}}</td>
                     <td><button class="btn" ng-click="vm.editItem(item)">Edit</button></td>

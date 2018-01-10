@@ -37,23 +37,6 @@ myApp.service('ItineraryService', function ($http, $location) {
         })
     } // end get all itineraries
 
-    // add new itinerary item to details view
-    self.addNewItem = function (newItem) {
-        console.log(newItem);
-        $http({
-            method: 'POST',
-            url: '/itinerary/additem',
-            data: newItem
-        }).then(function (response) {
-            console.log('response', response);
-            newItem.date = '';
-            newItem.name = '';
-            newItem.address = '';
-            newItem.drivetime = '';
-            self.getAllItems();
-        })
-    } // end add new itinerary item to details view
-
     // get all itinerary items on details view
     self.getAllItems = function () {
         console.log('in getAllItems');
@@ -66,6 +49,28 @@ myApp.service('ItineraryService', function ($http, $location) {
         })
     } // end get all itinerary items on details view
 
+    // add new itinerary item to details view
+    self.addNewItem = function (newItem, itineraryId) {
+        newItem.itinerary = itineraryId;
+        console.log(newItem);
+        $http({
+            method: 'POST',
+            url: '/itinerary/additem',
+            data: newItem
+        }).then(function (response) {
+            console.log('response', response);
+            newItem.date = '';
+            newItem.city_state = '';
+            newItem.name = '';
+            newItem.address = '';
+            newItem.drivetime = '';
+            newItem.person = '';
+            newItem.email = '';
+            newItem.phone = '';
+            self.getAllItems();
+        })
+    } // end add new itinerary item to details view
+
     // get itinerary details for details view
     self.getItineraryDetails = function (itinId) {
         $http({
@@ -74,33 +79,33 @@ myApp.service('ItineraryService', function ($http, $location) {
             params: {
                 itinId: itinId
             }
-        }).then(function(response){
+        }).then(function (response) {
             console.log('response', response);
             self.itinerary.list = response.data;
         });
     } // end get all itinerary details for details view
 
-    // get itin name on details view
-    self.getItineraryName = function(itinId) {
+    // get itin name on details view in h1
+    self.getItineraryName = function (itinId) {
         $http({
             method: 'GET',
             url: 'itinerary/itinerarynames',
             params: {
                 itinId: itinId
             }
-        }).then(function(response){
+        }).then(function (response) {
             console.log('response', response);
             self.itinName.list = response.data;
         });
-    } // end get itin name on details view
+    } // end get itin name on details view in h1
 
-    self.toggleDescription = function(card) {
-        card.showDescription = !card.showDescription;
-        if(card.showDescription == true) {
-            // increase views
-            card.views++;
-        }
-        
-    };
+    // self.toggleDescription = function(card) {
+    //     card.showDescription = !card.showDescription;
+    //     if(card.showDescription == true) {
+    //         // increase views
+    //         card.views++;
+    //     }
+
+    // };
 
 });

@@ -6,6 +6,7 @@ myApp.controller('ItineraryController', ['ItineraryService', '$routeParams', fun
     vm.itinerary = ItineraryService.itinerary;
     vm.item = ItineraryService.item;
     vm.itinName = ItineraryService.itinName;
+    vm.currentItineraryId = $routeParams.itinId;
 
     vm.addNewItinerary = ItineraryService.addNewItinerary;
     vm.addNewItem = ItineraryService.addNewItem;
