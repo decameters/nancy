@@ -52,7 +52,9 @@ router.get('/listdetails', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT * FROM list_items
+            client.query(`SELECT list_items.id AS list_id, list_items.name_id, list_items.item, 
+            list_items.quantity, list_items.is_packed, listnames.id, listnames.name, listnames.created_id
+            FROM list_items
             JOIN listnames ON listnames.id = list_items.name_id
             WHERE listnames.id=$1 AND listnames.created_id=$2;`, [listId, req.user.id], function (errorMakingQuery, result){
                 done();
