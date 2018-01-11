@@ -82,7 +82,8 @@ router.get('/itinerarydetails', function (req, res) {
             client.query(`SELECT * FROM itinerary_item
             JOIN tripnames ON tripnames.id = itinerary_item.trip_id
             JOIN contacts ON contacts.id = itinerary_item.contact_id
-            WHERE trip_id=$1 AND tripnames.created_id=$2;`, [itinId, req.user.id], function (errorMakingQuery, result){
+            WHERE trip_id=$1 AND tripnames.created_id=$2
+            ORDER BY date;`, [itinId, req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
