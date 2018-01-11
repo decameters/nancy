@@ -44,29 +44,6 @@ router.post('/add', function (req, res) {
     })
 }); // end post trip name to database
 
-// get all itinerary items
-router.get('/item', function (req, res) {
-    pool.connect(function (errorConnectingToDatabase, client, done){
-        if(errorConnectingToDatabase){
-            console.log('Error connecting to database', errorConnectingToDatabase);
-            res.sendStatus(500);
-        } else {
-            client.query(`SELECT * FROM itinerary_item
-            LEFT JOIN contacts ON contacts.id = itinerary_item.contact_id
-            LEFT JOIN tripnames ON tripnames.id = itinerary_item.trip_id
-            WHERE tripnames.created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
-                done();
-                if(errorMakingQuery){
-                    console.log('error making query', errorMakingQuery);
-                    res.sendStatus(500);
-                } else {
-                    res.send(result.rows);
-                }
-            })
-        }
-    })
-}); // end get all itinerary items
-
 // post itinerary-detail item to database
 router.post('/additem', function (req, res) {
     pool.connect(function (errorConnectingToDatabase, client, done){
@@ -94,7 +71,7 @@ router.post('/additem', function (req, res) {
     })
 }); // end post itinerary-detail item to database
 
-// get PARAMS***
+// get $routeParams for itinerary-details view
 router.get('/itinerarydetails', function (req, res) {
     var itinId = req.query.itinId;
     pool.connect(function (errorConnectingToDatabase, client, done){
@@ -105,7 +82,7 @@ router.get('/itinerarydetails', function (req, res) {
             client.query(`SELECT * FROM itinerary_item
             JOIN tripnames ON tripnames.id = itinerary_item.trip_id
             JOIN contacts ON contacts.id = itinerary_item.contact_id
-            WHERE trip_id = $1;`, [itinId], function (errorMakingQuery, result){
+            WHERE trip_id=$1 AND tripnames.created_id=$2;`, [itinId, req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -116,10 +93,9 @@ router.get('/itinerarydetails', function (req, res) {
             })
         }
     })
-}); // end get PARAMS***
-// add user.id so only theirs show up
+}); // end get $routeParams for itinerary-details view
 
-// get PARAMS***
+// get $routeParams for itinerary view
 router.get('/itinerarynames', function (req, res) {
     var itinId = req.query.itinId;
     pool.connect(function (errorConnectingToDatabase, client, done){
@@ -138,6 +114,29 @@ router.get('/itinerarynames', function (req, res) {
             })
         }
     })
-}); // end get PARAMS***
+}); // end get $routeParams for itinerary view
+
+// // get all itinerary items
+// router.get('/item', function (req, res) {
+//     pool.connect(function (errorConnectingToDatabase, client, done){
+//         if(errorConnectingToDatabase){
+//             console.log('Error connecting to database', errorConnectingToDatabase);
+//             res.sendStatus(500);
+//         } else {
+//             client.query(`SELECT * FROM itinerary_item
+//             LEFT JOIN contacts ON contacts.id = itinerary_item.contact_id
+//             LEFT JOIN tripnames ON tripnames.id = itinerary_item.trip_id
+//             WHERE tripnames.created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
+//                 done();
+//                 if(errorMakingQuery){
+//                     console.log('error making query', errorMakingQuery);
+//                     res.sendStatus(500);
+//                 } else {
+//                     res.send(result.rows);
+//                 }
+//             })
+//         }
+//     })
+// }); // end get all itinerary items
 
 module.exports = router;

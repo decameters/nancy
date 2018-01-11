@@ -4,14 +4,14 @@ myApp.controller('ItineraryController', ['ItineraryService', '$routeParams', fun
 
     vm.itineraryArray = ItineraryService.itineraryArray;
     vm.itinerary = ItineraryService.itinerary;
-    vm.item = ItineraryService.item;
+    // vm.item = ItineraryService.item;
     vm.itinName = ItineraryService.itinName;
     vm.currentItineraryId = $routeParams.itinId;
 
     vm.addNewItinerary = ItineraryService.addNewItinerary;
     vm.addNewItem = ItineraryService.addNewItem;
 
-    ItineraryService.getAllItems();
+    // ItineraryService.getAllItems();
     ItineraryService.getAllItineraries();
     ItineraryService.getItineraryDetails($routeParams.itinId);
     ItineraryService.getItineraryName($routeParams.itinId);
