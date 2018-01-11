@@ -1,10 +1,40 @@
 <div ng-include="'views/partials/nav2.html'"></div>
   <div class="main-container">
-    <h2>contacts</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi enim, rutrum ac dignissim eget, efficitur vitae lacus. Aliquam porttitor magna non tincidunt malesuada. Curabitur a libero vel nunc gravida sollicitudin id at libero. Vivamus et nisi ultrices, ultricies diam eget, dictum arcu. Morbi elementum feugiat est id faucibus. Ut fringilla ultrices felis, eu mollis purus ultrices vel. Nam feugiat cursus odio vel ultrices. Nullam erat sapien, porttitor eu sapien egestas, blandit varius libero.
+    <h2>{{cc.contactArray.list[0].name}}'s contacts</h2>
 
-            Cras augue nulla, tincidunt non ipsum non, bibendum ullamcorper magna. Fusce aliquam purus nec sodales mollis. Sed dolor lacus, rutrum sit amet iaculis at, imperdiet ut dolor. Maecenas at risus augue. Nulla facilisi. In interdum auctor maximus. Fusce et augue id turpis mollis pretium. Nullam accumsan hendrerit quam, ac dapibus nibh molestie vel.
-        </p>
+    <h3>add a new contact</h3>
+    <form novalidate class="simple-form">
+        <input type="text" ng-model="cc.newContact.person" placeholder="name" />
+        <input type="email" ng-model="cc.newContact.email" placeholder="email" />
+        <input type="number" ng-model="cc.newContact.phone" placeholder="phone" />
+        <br>
+        <br>
+        <input class="btn-sm" type="submit" ng-click="cc.addNewContact(cc.newContact)" value="add to contacts" />
+    </form>
+    <br>
+    <h3>view your contacts</h3>
+    <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- make this a thing that actually makes sense -->
+                <!-- editable fields -->
+                <tr ng-repeat="contact in cc.contactArray.list">
+                    <td>{{contact.person}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.phone}}</td>
+                    <td><input type="checkbox"></td>
+                    <td><button class="btn" ng-click="tc.deleteItem(buy)">Delete</button></td>  
+                    <!-- make these buttons work           -->
+                </tr>
+            </tbody>
+        </table>
   </div>
 </div>

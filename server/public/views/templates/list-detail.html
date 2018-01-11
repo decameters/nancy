@@ -1,9 +1,8 @@
 <div ng-include="'views/partials/nav2.html'"></div>
   <div class="main-container">
     <h2>{{tc.todoName.list[0].name}}</h2>
-{{tc}}
 
-
+    <h3>add an item to your list</h3>
     <form novalidate class="simple-form">
         <input type="text" ng-model="tc.newTodoItem.item" placeholder="item" />
         <input type="number" ng-model="tc.newTodoItem.quantity" placeholder="quantity" />
