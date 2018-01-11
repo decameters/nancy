@@ -3,15 +3,15 @@ myApp.service('ToDoService', function ($http, $location) {
     var self = this;
 
     self.todoArray = { list: [] };
-
-    self.todo = { list: {} };
+    self.todo = { list: [] };
+    self.todoName = { list: [] };
 
     // self.currentTodo = { list: [] };
     // self.thisTodo = { list: [] };
     // self.listTodo = { };
     // self.Todo = { list: [] };
 
-    // add new todo
+    // add new todo to list view
     self.addNewTodo = function (newTodo) {
         console.log(newTodo);
         $http({
@@ -23,9 +23,9 @@ myApp.service('ToDoService', function ($http, $location) {
             newTodo.name = '';
             self.getAllTodo();
         })
-    } // end add new todo
+    } // end add new todo to list view
 
-    // get all todo
+    // get all todo for list view
     self.getAllTodo = function () {
         console.log('in getAllTodo');
         $http({
@@ -35,10 +35,11 @@ myApp.service('ToDoService', function ($http, $location) {
             console.log('response', response);
             self.todoArray.list = response.data;
         })
-    } // end get all todo
+    } // end get all todo for list view
 
-    // add new itinerary item
-    self.addNewTodoItem = function (newTodoItem) {
+    // add new list item on list-details view
+    self.addNewTodoItem = function (newTodoItem, listId) {
+        newTodoItem.listId = listId;
         console.log(newTodoItem);
         $http({
             method: 'POST',
@@ -46,12 +47,39 @@ myApp.service('ToDoService', function ($http, $location) {
             data: newTodoItem
         }).then(function (response) {
             console.log('response', response);
-            newTodoItem.name = '';
+            newTodoItem.item = '';
             newTodoItem.quantity = '';
-            // self.getAllTodoItems();
+            self.getListDetails(newTodoItem.listId);
         })
-    } // end add new itinerary item
+    } // end add new list item on list-details view
 
+    // get all list details for list-detail view
+    self.getListDetails = function (listId) {
+        $http({
+            method: 'GET',
+            url: '/todo/listdetails',
+            params: {
+                listId: listId
+            }
+        }).then(function (response) {
+            console.log('response', response);
+            self.todo.list = response.data;
+        });
+    } // end get all list details for list-detail view
+
+    // get list name on details view in h1
+    self.getTodoName = function (listId) {
+        $http({
+            method: 'GET',
+            url: '/todo/listnames',
+            params: {
+                listId: listId
+            }
+        }).then(function (response) {
+            console.log('response', response);
+            self.todoName.list = response.data;
+        });
+    } // end get list name on details view in h1
 
     // // get all itinerary items
     // self.getAllTodoItems = function () {
@@ -68,7 +96,7 @@ myApp.service('ToDoService', function ($http, $location) {
     // self.getList = function (listTodo) {
     //     console.log('get list button clicked');
     //     console.log(listTodo);
-        
+
     //     $http({
     //         method: 'GET',
     //         url: '/todo/getlist',
@@ -78,18 +106,5 @@ myApp.service('ToDoService', function ($http, $location) {
     //         self.thisTodo.list = response.data;
     //     })
     // }
-
-    self.getListDetails = function (listId) {
-        $http({
-            method: 'GET',
-            url: '/todo/listdetails',
-            params: {
-                listId: listId
-            }
-        }).then(function(response){
-            console.log('response', response);
-            self.todo.list = response.data;
-        });
-    }
 
 });

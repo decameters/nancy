@@ -95,7 +95,7 @@ router.get('/itinerarydetails', function (req, res) {
     })
 }); // end get $routeParams for itinerary-details view
 
-// get $routeParams for itinerary view
+// get $routeParams for itinerary-details name
 router.get('/itinerarynames', function (req, res) {
     var itinId = req.query.itinId;
     pool.connect(function (errorConnectingToDatabase, client, done){
@@ -114,7 +114,7 @@ router.get('/itinerarynames', function (req, res) {
             })
         }
     })
-}); // end get $routeParams for itinerary view
+}); // end get $routeParams for itinerary-details name
 
 // // get all itinerary items
 // router.get('/item', function (req, res) {

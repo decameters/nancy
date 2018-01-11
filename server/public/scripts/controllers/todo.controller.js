@@ -3,9 +3,11 @@ myApp.controller('ToDoController', function (ToDoService, $routeParams) {
     var vm = this;
 
     vm.todoArray = ToDoService.todoArray;
-    vm.listTodo = ToDoService.listTodo;
+    // vm.listTodo = ToDoService.listTodo;
     vm.todo = ToDoService.todo;
-    // vm.thisTodo = ToDoService.thisTodo;
+    vm.todoName = ToDoService.todoName;
+    vm.thisTodoId = $routeParams.listId;
+
 
     vm.addNewTodo = ToDoService.addNewTodo;
     vm.addNewTodoItem = ToDoService.addNewTodoItem;
@@ -15,5 +17,6 @@ myApp.controller('ToDoController', function (ToDoService, $routeParams) {
 
     ToDoService.getAllTodo();
     ToDoService.getListDetails($routeParams.listId);
+    ToDoService.getTodoName($routeParams.listId);
     // ToDoService.getAllTodoItems();
 });
