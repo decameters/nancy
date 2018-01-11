@@ -12,7 +12,9 @@
         <input class="btn-sm" type="submit" ng-click="cc.addNewContact(cc.newContact)" value="add to contacts" />
     </form>
     <br>
-    <h3>view your contacts</h3>
+    <h3 id="contactView">view your contacts</h3>
+    <p id="searchContactBar">search your contacts: <input ng-model="contactSearch"></p>
+
     <table class="table table-bordered table-hover">
             <thead>
                 <tr>
@@ -26,7 +28,7 @@
             <tbody>
                 <!-- make this a thing that actually makes sense -->
                 <!-- editable fields -->
-                <tr ng-repeat="contact in cc.contactArray.list">
+                <tr ng-repeat="contact in cc.contactArray.list | filter:contactSearch">
                     <td>{{contact.person}}</td>
                     <td>{{contact.email}}</td>
                     <td>{{contact.phone}}</td>

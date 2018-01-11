@@ -142,3 +142,13 @@ h2 {
   background-color: lawngreen;
   color: black;
 }
+
+
+#contactView {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+#searchContactBar {
+  display: inline-block;
+}
