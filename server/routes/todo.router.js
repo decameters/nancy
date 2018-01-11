@@ -111,6 +111,48 @@ router.get('/listnames', function (req, res) {
     })
 }); // end get $routeParams for list-details name
 
+// delete list_item for list-details view
+router.delete('/deleteitem', function (req, res) {
+    var itemIdToRemove = req.query.list_id;
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query('DELETE FROM list_items WHERE id=$1;', [itemIdToRemove], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            })
+        }
+    })
+}); // end delete list_item for list-details view
+
+// delete list for lists view
+router.delete('/', function (req, res) {
+    var listIdToRemove = req.query.id;
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query('DELETE FROM listnames WHERE id=$1;', [listIdToRemove], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            })
+        }
+    })
+}); // end delete list for list view
+
 // get all todo items
 // router.get('/getlist', function (req, res) {
 //     pool.connect(function (errorConnectingToDatabase, client, done){

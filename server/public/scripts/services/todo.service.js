@@ -81,6 +81,30 @@ myApp.service('ToDoService', function ($http, $location) {
         });
     } // end get list name on details view in h1
 
+    // delete list item on details view
+    self.deleteItem = function (itemToDelete) {
+        $http({
+            method: 'DELETE',
+            url: '/todo/deleteitem',
+            params: itemToDelete
+        }).then(function(response){
+            console.log('response', response);
+            self.getListDetails(itemToDelete.id);
+        })
+    } // end delete list item on details view
+
+    // delete list on lists view
+    self.deleteList = function (listToDelete) {
+        $http({
+            method: 'DELETE',
+            url: '/todo',
+            params: listToDelete
+        }).then(function(response){
+            console.log('response', response);
+            self.getAllTodo();
+        })
+    } // end delete list on lists view
+
     // // get all itinerary items
     // self.getAllTodoItems = function () {
     //     console.log('in getAllTodoItems');

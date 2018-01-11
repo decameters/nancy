@@ -12,6 +12,8 @@ myApp.controller('ToDoController', function (ToDoService, $routeParams) {
     vm.addNewTodo = ToDoService.addNewTodo;
     vm.addNewTodoItem = ToDoService.addNewTodoItem;
     vm.getList = ToDoService.getList;
+    vm.deleteItem = ToDoService.deleteItem;
+    vm.deleteList = ToDoService.deleteList;
 
 
 

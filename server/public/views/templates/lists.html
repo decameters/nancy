@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/nav2.html'"></div>
   <div class="main-container">
-    
+
     <h2>lists</h2>
     <h3>create a new list</h3>
     <form novalidate class="simple-form">
@@ -25,7 +25,7 @@
                   <tr ng-repeat="todo in tc.todoArray.list">
                       <td>{{todo.name}}</td>
                       <td><a class="btn-sm" ng-href="#/list-detail/{{todo.id}}">choose list</a></td>
-                      <td><button class="btn-sm" ng-click="tc.deleteItem(buy)">delete list</button></td>
+                      <td><button class="btn-sm" ng-click="tc.deleteList(todo)">delete list</button></td>
                       <!-- make these buttons work           -->
                   </tr>
               </tbody>
