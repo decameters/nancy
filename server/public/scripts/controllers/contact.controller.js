@@ -5,6 +5,7 @@ myApp.controller('ContactController', function(ContactService) {
     vm.contactArray = ContactService.contactArray;
 
     vm.addNewContact = ContactService.addNewContact;
+    vm.deleteContact = ContactService.deleteContact;
 
     ContactService.getAllContacts();
 

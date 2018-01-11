@@ -32,4 +32,17 @@ myApp.service('ContactService', function ($http, $location) {
         })
     } // end add new contact to contact view
 
+    // delete contact on contact view
+    self.deleteContact = function (contactToDelete) {
+        $http({
+            method: 'DELETE',
+            url: 'contacts/deletecontact',
+            params: contactToDelete
+        }).then(function(response){
+            console.log('response', response);
+            self.getAllContacts();
+        })
+
+    } // end delete contact on contact view
+
 });
