@@ -132,7 +132,7 @@ router.delete('/deleteitem', function (req, res) {
     })
 }); // end delete list_item for list-details view
 
-// delete list for lists view
+// delete entire list for lists view
 router.delete('/', function (req, res) {
     var listIdToRemove = req.query.id;
     pool.connect(function (errorConnectingToDatabase, client, done) {
@@ -151,7 +151,7 @@ router.delete('/', function (req, res) {
             })
         }
     })
-}); // end delete list for list view
+}); // end delete entire list for list view
 
 // get all todo items
 // router.get('/getlist', function (req, res) {

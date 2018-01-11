@@ -93,7 +93,7 @@ myApp.service('ToDoService', function ($http, $location) {
         })
     } // end delete list item on details view
 
-    // delete list on lists view
+    // delete entire list on lists view
     self.deleteList = function (listToDelete) {
         $http({
             method: 'DELETE',
@@ -103,7 +103,7 @@ myApp.service('ToDoService', function ($http, $location) {
             console.log('response', response);
             self.getAllTodo();
         })
-    } // end delete list on lists view
+    } // end delete entire list on lists view
 
     // // get all itinerary items
     // self.getAllTodoItems = function () {

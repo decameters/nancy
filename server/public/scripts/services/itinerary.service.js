@@ -87,6 +87,30 @@ myApp.service('ItineraryService', function ($http, $location) {
         });
     } // end get itin name on details view in h1
 
+    // delete itin item on details view
+    self.deleteItinItem = function (itemToDelete) {
+        $http({
+            method: 'DELETE',
+            url: '/itinerary/deleteitem',
+            params: itemToDelete
+        }).then(function(response){
+            console.log('response', response);
+            self.getItineraryDetails(itemToDelete.trip_id);
+        })
+    } // end delete itin item on details view
+
+    // delete entire itinerary on itinerary view
+    self.deleteItinerary = function (itinToDelete) {
+        $http({
+            method: 'DELETE',
+            url: '/itinerary',
+            params: itinToDelete
+        }).then(function(response){
+            console.log('response', response);
+            self.getAllItineraries();
+        })
+    } // end delete entire itinerary on itinerary view
+
         // // get all itinerary items on details view
     // self.getAllItems = function () {
     //     console.log('in getAllItems');

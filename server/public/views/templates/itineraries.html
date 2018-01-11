@@ -25,8 +25,8 @@
                 <tr ng-repeat="itinerary in ic.itineraryArray.list">
                     <td>{{itinerary.name}}</td>
                     <td><a class="btn-sm" ng-href="#/itinerary-detail/{{itinerary.id}}">choose itinerary</a></td>
-                    <td><button class="btn-sm" ng-click="vm.editItem(item)">edit itinerary</button></td>
-                    <td><button class="btn-sm" ng-click="tc.deleteItem(buy)">delete itinerary</button></td>
+                    <td><button class="btn-sm" ng-click="ic.editItem(item)">edit itinerary</button></td>
+                    <td><button class="btn-sm" ng-click="ic.deleteItinerary(itinerary)">delete itinerary</button></td>
                     <!-- make these buttons work           -->
                 </tr>
             </tbody>

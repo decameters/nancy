@@ -10,6 +10,8 @@ myApp.controller('ItineraryController', ['ItineraryService', '$routeParams', fun
 
     vm.addNewItinerary = ItineraryService.addNewItinerary;
     vm.addNewItem = ItineraryService.addNewItem;
+    vm.deleteItinItem = ItineraryService.deleteItinItem;
+    vm.deleteItinerary = ItineraryService.deleteItinerary;
 
     // ItineraryService.getAllItems();
     ItineraryService.getAllItineraries();

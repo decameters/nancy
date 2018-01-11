@@ -79,7 +79,9 @@ router.get('/itinerarydetails', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT * FROM itinerary_item
+            client.query(`SELECT  itinerary_item.id AS itin_id, itinerary_item.trip_id, itinerary_item.date, itinerary_item.city_state, itinerary_item.destination, itinerary_item.address,
+            itinerary_item.drivetime, itinerary_item.contact_id, tripnames.name, tripnames.link, tripnames.created_id, contacts.person, contacts.email, contacts.phone
+            FROM itinerary_item
             JOIN tripnames ON tripnames.id = itinerary_item.trip_id
             JOIN contacts ON contacts.id = itinerary_item.contact_id
             WHERE trip_id=$1 AND tripnames.created_id=$2
@@ -116,6 +118,48 @@ router.get('/itinerarynames', function (req, res) {
         }
     })
 }); // end get $routeParams for itinerary-details name
+
+// delete itin item for interary-details view
+router.delete('/deleteitem', function (req, res) {
+    var itinItemIdToRemove = req.query.itin_id;
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query('DELETE FROM itinerary_item WHERE id=$1;', [itinItemIdToRemove], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            })
+        }
+    })
+}); // delete itin item for interary-details view
+
+// delete entire itinerary for itinerary view
+router.delete('/', function (req, res) {
+    var itinIdToRemove = req.query.id;
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query('DELETE FROM tripnames WHERE id=$1;', [itinIdToRemove], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            })
+        }
+    })
+}); // end delete entire itinerary for itinerary view
 
 // // get all itinerary items
 // router.get('/item', function (req, res) {
