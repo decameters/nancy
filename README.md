@@ -24,18 +24,10 @@ Link to software that is required to install the app (e.g. node).
 
 ### Installing
 
-Copy and paste database.sql file to set up basic database structure.
-
 ```sql
-CREATE TABLE "users" (
-  "id" serial primary key,
-  "username" varchar(80) not null UNIQUE,
-  "password" varchar(240) not null,
-  "first_name" varchar(25),
-  "last_name" varchar(25),
-  "phone" bigint ***this might change***
-);
+CREATE DATABASE nancy;
 ```
+Copy and paste database.sql file to set up the entire basic database structure∏
 
 ## Screen Shot
 
@@ -43,7 +35,7 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ## Documentation
 
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
+[Google Doc of NANCY's original scope](https://goo.gl/zmoEuE)
 
 ### Completed Features
 
