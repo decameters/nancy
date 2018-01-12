@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/nav2.html'"></div>
-  <div class="main-container">
+<div class="main-container">
     <h2>{{ic.itinName.list[0].name}}</h2>
 
     <form novalidate class="simple-form">
@@ -14,40 +14,72 @@
         <input type="number" ng-model="ic.newItem.phone" placeholder="contact phone" />
         <br>
         <br>
-        <input class="btn-sm" type="submit" ng-click="ic.addNewItem(ic.newItem, ic.currentItineraryId)" value="add to itinerary" />
+        <input class="btn-sm" type="submit" ng-click="ic.addNewItem(ic.newItem, ic.currentItineraryId)" value="add to itinerary"
+        />
         <a class="btn-sm" target="_blank" ng-href="{{ic.itinName.list[0].link}}">GOOGLE MAP</a>
     </form>
     <br>
-    <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>City, State</th>
-                    <th>Destination</th>
-                    <th>Address</th>
-                    <th>Drive Time</th>
-                    <th>Contact</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in ic.itinerary.list">
-                    <td>{{item.date | date:'EEE, MMM d, yyyy'}}</td>
-                    <td>{{item.city_state}}</td>
-                    <td>{{item.destination}}</td>
-                    <td>{{item.address}}</td>
-                    <td>{{item.drivetime}}</td>
-                    <td>{{item.person}}</td>
-                    <td>{{item.email}}</td>
-                    <td>{{item.phone}}</td>
-                    <td><button class="btn" ng-click="ic.editItem(item)">Edit</button></td>
-                    <td><button class="btn-sm" ng-click="ic.deleteItinItem(item)">Delete</button></td>
-                    <!-- fix these buttons ^^          -->
-                </tr>
-            </tbody>
-        </table>
-
+    <div class="table-container">
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>DATE</th>
+                        <th>city, state</th>
+                        <th>destination</th>
+                        <th>address</th>
+                        <th>drive time</th>
+                        <th>contact</th>
+                        <th>email</th>
+                        <th>phone</th>
+                        <th>edit</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in ic.itinerary.list">
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="item.isEditable">{{item.date | date:'EEE, MMM d, yyyy'}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="date" ng-model="item.date">
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="item.isEditable">{{item.city_state}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="text" ng-model="item.city_state">
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="item.isEditable">{{item.destination}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="text" ng-model="item.destination">
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="item.isEditable">{{item.address}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="text" ng-model="item.address">
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="item.isEditable">{{item.drivetime}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="text" ng-model="item.drivetime">
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="item.isEditable">{{item.person}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="text" ng-model="item.person">
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="item.isEditable">{{item.email}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="email" ng-model="item.email">
+                        </td>
+                        <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                            <p ng-hide="item.isEditable">{{item.phone}}</p>
+                            <input class="textbox" ng-show="item.isEditable" type="number" ng-model="item.phone">
+                        </td>
+                        <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                            <button class="btn-sm" ng-hide="item.isEditable" ng-click="item.isEditable = !item.isEditable">edit</button>
+                            <button class="btn-sm" ng-show="item.isEditable" ng-click="ic.editItinItem(item)">save</button>
+                        </td>
+                        <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                            <button class="btn-sm" ng-click="ic.deleteItinItem(item)">delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

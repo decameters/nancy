@@ -181,6 +181,32 @@ router.put('/edititinerary', function (req, res) {
     })
 }); // end put route for editing itinerary name in database
 
+// put route for editing itinerary item in itinerary_item in database
+router.put('/edititinitem', function (req, res) {
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`WITH update_contact AS (
+                UPDATE "contacts" SET person=$1, email=$2, phone=$3
+                WHERE id=$4
+                )
+                UPDATE "itinerary_item" SET date=$5, city_state=$6, destination=$7, address=$8, drivetime=$9
+                WHERE id=$10;`, [req.body.person, req.body.email, req.body.phone, req.body.contact_id,
+                req.body.date, req.body.city_state, req.body.destination, req.body.address, req.body.drivetime, req.body.itin_id], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(204);
+                }
+            })
+        }
+    })
+}); // end put route for editing itinerary item in itinerary_item in database
+
 
 // // get all itinerary items
 // router.get('/item', function (req, res) {
