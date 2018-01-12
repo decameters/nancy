@@ -11,39 +11,45 @@
         <input class="btn-sm" type="submit" ng-click="tc.addNewTodoItem(tc.newTodoItem, tc.thisTodoId)" value="add to list" />
     </form>
     <br>
-    <table class="table table-bordered table-hover">
+    <div class="table-container">
+        <div class="row">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Packed?</th>
                 <th>Item</th>
                 <th>Quantity</th>
                 <th>Edit</th>
-                <th>Delete</th>
+                <th>Delete / Save</th>
             </tr>
         </thead>
         <tbody>
             <!-- make this a thing that actually makes sense -->
             <!-- editable fields -->
             <tr ng-repeat="item in tc.todo.list">
-                <td class="col-md-1 col-xs-1">
+                <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
                     <input type="checkbox" ng-model="item.is_packed" ng-click="tc.packItem(item)">
                 </td>
-                <td>
+                <td class="col-lg-3 col-md-3 col-s-3 col-xs-3">
                     <p ng-hide="item.isEditable">{{item.item}}</p>
-                    <input ng-show="item.isEditable" type="text" ng-model="item.item">
+                    <input class="textbox" ng-show="item.isEditable" type="text" ng-model="item.item">
                 </td>
-                <td>
+                <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
                     <p ng-hide="item.isEditable">{{item.quantity}}</p>
-                    <input ng-show="item.isEditable" type="number" ng-model="item.quantity">
+                    <input class="textbox" ng-show="item.isEditable" type="number" ng-model="item.quantity">
                 </td>
-                <td>
-                    <input type="checkbox" ng-click="item.isEditable = !item.isEditable">
+                <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                    <button class="btn-sm" ng-hide="item.isEditable" ng-click="item.isEditable = !item.isEditable">edit item</button>
+                    <button class="btn-sm" ng-show="item.isEditable" ng-click="tc.editItem(item)">save changes</button>
+                    <!-- <input type="checkbox" ng-click="item.isEditable = !item.isEditable"> -->
                 </td>
-                <td>
-                    <button class="btn-sm" ng-click="tc.deleteItem(item)">delete</button>
+                <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                    <!-- <button ng-show="item.isEditable" class="btn-sm" ng-click="tc.editItem(item)">save</button> -->
+                    <button ng-hide="item.isEditable" class="btn-sm" ng-click="tc.deleteItem(item)">delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
-
+</div>
+</div>
 </div>

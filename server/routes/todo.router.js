@@ -174,6 +174,26 @@ router.put('/packitem', function (req, res) {
     })
 }); // end put route for pack item to database
 
+// put route for editing item in database
+router.put('/edititem', function (req, res) {
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`UPDATE list_items SET item=$1, quantity=$2 WHERE id=$3;;`, [req.body.item, req.body.quantity, req.body.list_id], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(204);
+                }
+            })
+        }
+    })
+}); // end put route for editing item in database
+
 // get all todo items
 // router.get('/getlist', function (req, res) {
 //     pool.connect(function (errorConnectingToDatabase, client, done){

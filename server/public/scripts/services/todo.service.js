@@ -105,6 +105,7 @@ myApp.service('ToDoService', function ($http, $location) {
         })
     } // end delete entire list on lists view
 
+    // pack or unpack item
     self.packItem = function (itemToPack) {
         console.log(itemToPack);
         $http({
@@ -115,7 +116,21 @@ myApp.service('ToDoService', function ($http, $location) {
             console.log('response', response);
             self.getListDetails(itemToPack.name_id)
         })
-    }
+    } // end pack or unpack item
+
+    // update list item on details view
+    self.editItem = function (itemToEdit) {
+        console.log(itemToEdit);
+        $http({
+            method: 'PUT',
+            url: '/todo/edititem',
+            data: itemToEdit
+        }).then(function(response){
+            console.log('response', response);
+            self.getListDetails(itemToEdit.name_id);
+        })
+    } // end update list item on details view
+
 
     // // get all itinerary items
     // self.getAllTodoItems = function () {

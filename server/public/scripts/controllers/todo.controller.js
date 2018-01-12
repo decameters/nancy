@@ -15,6 +15,7 @@ myApp.controller('ToDoController', function (ToDoService, $routeParams) {
     vm.deleteItem = ToDoService.deleteItem;
     vm.deleteList = ToDoService.deleteList;
     vm.packItem = ToDoService.packItem;
+    vm.editItem = ToDoService.editItem;
 
 
 
