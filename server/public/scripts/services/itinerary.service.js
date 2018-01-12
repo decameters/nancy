@@ -111,6 +111,19 @@ myApp.service('ItineraryService', function ($http, $location) {
         })
     } // end delete entire itinerary on itinerary view
 
+    // edit itinerary name on intinerary view
+    self.editItin = function (itinToEdit) {
+        console.log(itinToEdit);
+        $http({
+            method: 'PUT',
+            url: '/itinerary/edititinerary',
+            data: itinToEdit
+        }).then(function(response){
+            console.log('response', response);
+            self.getAllItineraries();
+        })
+    } // end edit itinerary name on itinerary view
+
         // // get all itinerary items on details view
     // self.getAllItems = function () {
     //     console.log('in getAllItems');

@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`SELECT * FROM "tripnames" WHERE created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
+            client.query(`SELECT * FROM "tripnames" WHERE created_id=$1 ORDER BY id;`, [req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -160,6 +160,27 @@ router.delete('/', function (req, res) {
         }
     })
 }); // end delete entire itinerary for itinerary view
+
+// put route for editing itinerary name in database
+router.put('/edititinerary', function (req, res) {
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`UPDATE tripnames SET name=$1, link=$2 WHERE id=$3;`, [req.body.name, req.body.link, req.body.id], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(204);
+                }
+            })
+        }
+    })
+}); // end put route for editing itinerary name in database
+
 
 // // get all itinerary items
 // router.get('/item', function (req, res) {

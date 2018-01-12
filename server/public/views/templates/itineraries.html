@@ -10,27 +10,44 @@
       <input class="btn-sm" type="submit" ng-click="ic.addNewItinerary(ic.newItinerary)" value="create new itinerary" />
     </form>
     <br>
-    <h3>add to or edit an itinerary</h3>
-
-        <table class="table table-bordered table-hover">
+    <h3>select an itinerary</h3>
+    <div class="table-container">
+            <div class="row">
+        <table class="table table-hover">
                 <thead>
                         <tr>
                             <th>ITINERARIES</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>link</th>
+                            <th>edit</th>
+                            <th>delete</th>
+                            <th>select</th>
                         </tr>
                     </thead>
             <tbody>
                 <tr ng-repeat="itinerary in ic.itineraryArray.list">
-                    <td>{{itinerary.name}}</td>
-                    <td><a class="btn-sm" ng-href="#/itinerary-detail/{{itinerary.id}}">choose itinerary</a></td>
-                    <td><button class="btn-sm" ng-click="ic.editItem(item)">edit itinerary</button></td>
-                    <td><button class="btn-sm" ng-click="ic.deleteItinerary(itinerary)">delete itinerary</button></td>
-                    <!-- make these buttons work           -->
+                    <td class="col-lg-3 col-md-3 col-s-3 col-xs-3">
+                            <p ng-hide="itinerary.isEditable">{{itinerary.name}}</p>
+                            <input class="textbox" ng-show="itinerary.isEditable" type="text" ng-model="itinerary.name">
+                    </td>
+                    <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <a ng-href="{{itinerary.link}}" target="_blank" ng-hide="itinerary.isEditable">{{itinerary.link}}</a>
+                            <input class="textbox" ng-show="itinerary.isEditable" type="link" ng-model="itinerary.link">
+                        </td>
+                    <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                            <button class="btn-sm" ng-hide="itinerary.isEditable" ng-click="itinerary.isEditable = !itinerary.isEditable">edit itinerary</button>
+                            <button class="btn-sm" ng-show="itinerary.isEditable" ng-click="ic.editItin(itinerary)">save itinerary</button>
+                        </td>
+                        <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                            <button class="btn-sm" ng-click="ic.deleteItinerary(itinerary)">delete itinerary</button>
+                        </td>
+                    <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                        <a ng-href="#/itinerary-detail/{{itinerary.id}}"><button class="btn-sm">select itinerary</a></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
-    
+    </div>
+</div>
   </div>
 </div>
+

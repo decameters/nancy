@@ -181,7 +181,7 @@ router.put('/edititem', function (req, res) {
             console.log('Error connecting to database', errorConnectingToDatabase);
             res.sendStatus(500);
         } else {
-            client.query(`UPDATE list_items SET item=$1, quantity=$2 WHERE id=$3;;`, [req.body.item, req.body.quantity, req.body.list_id], function (errorMakingQuery, result) {
+            client.query(`UPDATE list_items SET item=$1, quantity=$2 WHERE id=$3;`, [req.body.item, req.body.quantity, req.body.list_id], function (errorMakingQuery, result) {
                 done();
                 if (errorMakingQuery) {
                     console.log('Error making query', errorMakingQuery);
