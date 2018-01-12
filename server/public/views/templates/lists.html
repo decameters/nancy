@@ -1,34 +1,46 @@
 <div ng-include="'views/partials/nav2.html'"></div>
-  <div class="main-container">
+<div class="main-container">
 
-    <h2>lists</h2>
-    <h3>create a new list</h3>
-    <form novalidate class="simple-form">
-        <input type="text" ng-model="tc.newTodo.name" placeholder="name your list" />
-        <br>
-        <br>
-        <input class="btn-sm" type="submit" ng-click="tc.addNewTodo(tc.newTodo)" value="create new list" />
-      </form>
-      <br>
-      <h3>choose a list to add to or edit</h3>
-      
-      <!-- <select ng-options="todo.id as todo.name for todo in tc.todoArray.list track by todo.id" ng-model="tc.listTodo">{{todo}}</select>
-      <a class="btn-sm" ng-href="#/list-detail/{{tc.listTodo}}">choose list</a> -->
-      <!-- <button ng-href="#/list-detail/{{tc.listTodo}}">CLICK</button>
-      <button ng-click="tc.getList(tc.listTodo)">choose list</button> -->
-          <!-- {{tc.listTodo}} -->
-
-          <table class="table table-hover">
-              <tbody>
-                  <!-- make this a thing that actually makes sense -->
-                  <!-- editable fields -->
-                  <tr ng-repeat="todo in tc.todoArray.list">
-                      <td>{{todo.name}}</td>
-                      <td><a class="btn-sm" ng-href="#/list-detail/{{todo.id}}">choose list</a></td>
-                      <td><button class="btn-sm" ng-click="tc.deleteList(todo)">delete list</button></td>
-                      <!-- make these buttons work           -->
-                  </tr>
-              </tbody>
-          </table>
+  <h2>lists</h2>
+  <h3>create a new list</h3>
+  <form novalidate class="simple-form">
+    <input type="text" ng-model="tc.newTodo.name" placeholder="name your list" />
+    <br>
+    <br>
+    <input class="btn-sm" type="submit" ng-click="tc.addNewTodo(tc.newTodo)" value="create new list" />
+  </form>
+  <br>
+  <h3>select a list to add to or edit</h3>
+  <div class="table-container">
+    <div class="row">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>LISTS</th>
+            <th>select</th>
+            <th>delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- make this a thing that actually makes sense -->
+          <!-- editable fields -->
+          <tr ng-repeat="todo in tc.todoArray.list">
+            <td class="col-lg-3 col-md-3 col-s-3 col-xs-3">
+              {{todo.name}}
+            </td>
+            <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+              <a ng-href="#/list-detail/{{todo.id}}">
+                <button class="btn-sm">select list</button>
+              </a>
+              <!-- <a class="btn-sm" ng-href="#/list-detail/{{todo.id}}">choose list</a> -->
+            </td>
+            <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+              <button class="btn-sm" ng-click="tc.deleteList(todo)">delete list</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
 </div>
