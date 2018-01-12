@@ -56,7 +56,8 @@ router.get('/listdetails', function (req, res) {
             list_items.quantity, list_items.is_packed, listnames.id, listnames.name, listnames.created_id
             FROM list_items
             JOIN listnames ON listnames.id = list_items.name_id
-            WHERE listnames.id=$1 AND listnames.created_id=$2;`, [listId, req.user.id], function (errorMakingQuery, result){
+            WHERE listnames.id=$1 AND listnames.created_id=$2
+            ORDER BY list_id;`, [listId, req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -152,6 +153,26 @@ router.delete('/', function (req, res) {
         }
     })
 }); // end delete entire list for list view
+
+// put route for pack item to database
+router.put('/packitem', function (req, res) {
+    pool.connect(function (errorConnectingToDatabase, client, done){
+        if(errorConnectingToDatabase){
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`UPDATE list_items SET is_packed = NOT is_packed WHERE id=$1;`, [req.body.list_id], function (errorMakingQuery, result){
+                done();
+                if(errorMakingQuery){
+                    console.log('error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            })
+        }
+    })
+}); // end put route for pack item to database
 
 // get all todo items
 // router.get('/getlist', function (req, res) {

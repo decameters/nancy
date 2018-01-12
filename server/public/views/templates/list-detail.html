@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/nav2.html'"></div>
-  <div class="main-container">
+<div class="main-container">
     <h2>{{tc.todoName.list[0].name}}</h2>
 
     <h3>add an item to your list</h3>
@@ -12,27 +12,38 @@
     </form>
     <br>
     <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Packed?</th>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- make this a thing that actually makes sense -->
-                <!-- editable fields -->
-                <tr ng-repeat="item in tc.todo.list">
-                    <td><input type="checkbox">{{item.is_packed}}</td>
-                    <!-- <td>{{item.is_packed}}</td> -->
-                    <td>{{item.item}}</td>
-                    <td>{{item.quantity}}</td>
-                    <td><input type="checkbox"></td>
-                    <td><button class="btn-sm" ng-click="tc.deleteItem(item)">delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <thead>
+            <tr>
+                <th>Packed?</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- make this a thing that actually makes sense -->
+            <!-- editable fields -->
+            <tr ng-repeat="item in tc.todo.list">
+                <td class="col-md-1 col-xs-1">
+                    <input type="checkbox" ng-model="item.is_packed" ng-click="tc.packItem(item)">
+                </td>
+                <td>
+                    <p ng-hide="item.isEditable">{{item.item}}</p>
+                    <input ng-show="item.isEditable" type="text" ng-model="item.item">
+                </td>
+                <td>
+                    <p ng-hide="item.isEditable">{{item.quantity}}</p>
+                    <input ng-show="item.isEditable" type="number" ng-model="item.quantity">
+                </td>
+                <td>
+                    <input type="checkbox" ng-click="item.isEditable = !item.isEditable">
+                </td>
+                <td>
+                    <button class="btn-sm" ng-click="tc.deleteItem(item)">delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>

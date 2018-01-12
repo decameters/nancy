@@ -105,6 +105,18 @@ myApp.service('ToDoService', function ($http, $location) {
         })
     } // end delete entire list on lists view
 
+    self.packItem = function (itemToPack) {
+        console.log(itemToPack);
+        $http({
+            method: 'PUT',
+            url: 'todo/packitem',
+            data: itemToPack
+        }).then(function (response){
+            console.log('response', response);
+            self.getListDetails(itemToPack.name_id)
+        })
+    }
+
     // // get all itinerary items
     // self.getAllTodoItems = function () {
     //     console.log('in getAllTodoItems');
