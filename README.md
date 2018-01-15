@@ -27,7 +27,7 @@ Link to software that is required to install the app (e.g. node).
 ```sql
 CREATE DATABASE nancy;
 ```
-Copy and paste database.sql file to set up the entire basic database structure∏
+Copy and paste database.sql file to set up the entire basic database structure.
 
 ## Screen Shot
 
