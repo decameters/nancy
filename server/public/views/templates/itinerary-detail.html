@@ -8,15 +8,14 @@
         <input type="text" ng-model="ic.newItem.name" placeholder="destination / venue" />
         <input type="text" ng-model="ic.newItem.address" placeholder="address" />
         <input type="text" ng-model="ic.newItem.drivetime" placeholder="est drive time" />
-        <br>
         <input type="text" ng-model="ic.newItem.person" placeholder="contact name" />
         <input type="email" ng-model="ic.newItem.email" placeholder="contact email" />
         <input type="number" ng-model="ic.newItem.phone" placeholder="contact phone" />
         <br>
         <br>
-        <input class="btn-sm" type="submit" ng-click="ic.addNewItem(ic.newItem, ic.currentItineraryId)" value="add to itinerary"
+        <input class="btn-sm itin" type="submit" ng-click="ic.addNewItem(ic.newItem, ic.currentItineraryId)" value="add to itinerary"
         />
-        <a class="btn-sm" target="_blank" ng-href="{{ic.itinName.list[0].link}}">GOOGLE MAP</a>
+        <a target="_blank" ng-href="{{ic.itinName.list[0].link}}"><button class="btn-sm itin">view google map</button></a>
     </form>
     <br>
     <div class="table-container">
@@ -71,11 +70,11 @@
                             <input class="textbox" ng-show="item.isEditable" type="number" ng-model="item.phone">
                         </td>
                         <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
-                            <button class="btn-sm" ng-hide="item.isEditable" ng-click="item.isEditable = !item.isEditable">edit</button>
-                            <button class="btn-sm" ng-show="item.isEditable" ng-click="ic.editItinItem(item)">save</button>
+                            <button class="btn-sm itin" ng-hide="item.isEditable" ng-click="item.isEditable = !item.isEditable">edit</button>
+                            <button class="btn-sm itin" ng-show="item.isEditable" ng-click="ic.editItinItem(item)">save</button>
                         </td>
                         <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
-                            <button class="btn-sm" ng-click="ic.deleteItinItem(item)">delete</button>
+                            <button class="btn-sm itin" ng-click="ic.deleteItinItem(item)">delete</button>
                         </td>
                     </tr>
                 </tbody>

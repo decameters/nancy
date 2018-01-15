@@ -90,9 +90,10 @@ a {
   color: black;
 }
 
-a:hover {
+/* a:hover {
   color: lawngreen;
-}
+  
+} */
 
 h1 > a {
   text-decoration: none !important;
@@ -146,8 +147,7 @@ h2 {
 }
 
 .btn-sm:hover {
-  background-color: lawngreen;
-  color: black;
+  opacity: 0.7;
 }
 
 
@@ -165,8 +165,45 @@ h2 {
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: rgba(255, 235, 205, 0.6);
+  /* background-color: rgba(255, 235, 205, 0.6); */
+  background-color: whitesmoke;
 }
+
+/* main {
+  color: lawngreen
+} */
+
+/* .itin {
+  background-color: turquoise;
+}
+
+.itinhover:hover {
+  color: turquoise;
+}
+
+.con {
+  background-color: deeppink;
+}
+
+.conhover:hover {
+  color: deeppink;
+}
+
+.list {
+  color: gold;
+}
+
+.listhover:hover {
+  color: gold;
+}
+
+about {
+  color: gold;
+}
+
+.abouthover:hover {
+  color: gold;
+} */
 
 /* input {
   background-color: floralwhite
