@@ -8,7 +8,7 @@
         <input type="number" ng-model="tc.newTodoItem.quantity" placeholder="quantity" />
         <br>
         <br>
-        <input class="btn-sm" type="submit" ng-click="tc.addNewTodoItem(tc.newTodoItem, tc.thisTodoId)" value="add to list" />
+        <input class="btn-sm list" type="submit" ng-click="tc.addNewTodoItem(tc.newTodoItem, tc.thisTodoId)" value="add to list" />
     </form>
     <br>
     <div class="table-container">
@@ -37,13 +37,13 @@
                             <input class="textbox" ng-show="item.isEditable" type="number" ng-model="item.quantity">
                         </td>
                         <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
-                            <button class="btn-sm" ng-hide="item.isEditable" ng-click="item.isEditable = !item.isEditable">edit item</button>
-                            <button class="btn-sm" ng-show="item.isEditable" ng-click="tc.editItem(item)">save changes</button>
+                            <button class="btn-sm list" ng-hide="item.isEditable" ng-click="item.isEditable = !item.isEditable">edit item</button>
+                            <button class="btn-sm list" ng-show="item.isEditable" ng-click="tc.editItem(item)">save changes</button>
                             <!-- <input type="checkbox" ng-click="item.isEditable = !item.isEditable"> -->
                         </td>
                         <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
                             <!-- <button ng-show="item.isEditable" class="btn-sm" ng-click="tc.editItem(item)">save</button> -->
-                            <button ng-hide="item.isEditable" class="btn-sm" ng-click="tc.deleteItem(item)">delete</button>
+                            <button class="btn-sm list" ng-hide="item.isEditable" ng-click="tc.deleteItem(item)">delete</button>
                         </td>
                     </tr>
                 </tbody>

@@ -50,6 +50,16 @@ body, html {
   background-color: #f8f8f8;
 }
 
+.alert-danger {
+  background-color: rgb(255, 127, 255);
+  color: black;
+  font-size: 20px;
+  font-style: italic;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 36%;
+}
+
 .btn-danger{
   margin-left: 10px;
 }
@@ -59,6 +69,10 @@ body, html {
   width: 100%;
   border-radius: 0px;
   padding-left: 30px;
+}
+
+.logout {
+  float: right;
 }
 
 ul {
@@ -82,7 +96,7 @@ li a {
 
 li a:hover {
   text-decoration: none;
-  color: greenyellow;
+  color: rgb(0, 255, 0);
 }
 
 a {
@@ -101,7 +115,7 @@ h1 > a {
 }
 
 h1 > a:hover {
-  color: lawngreen !important;
+  color: rgb(0, 255, 0) !important;
 }
 
 h2 {
@@ -115,7 +129,7 @@ h2 {
 }
 
 #header-text {
-  color: lawngreen;
+  color: rgb(0, 255, 0);
   position: relative;
   text-decoration: underline;
   font-weight: bold;
@@ -124,7 +138,7 @@ h2 {
 }
 
 .smile {
-  color: lawngreen;
+  color: rgb(0, 255, 0);
   position: relative;
   padding-left: 10px;
   top: 10%;
@@ -142,7 +156,7 @@ h2 {
 
 .btn-sm {
   font-size: 16px;
-  background-color: lawngreen;
+  background-color: rgb(0, 255, 0);
   color: black;
 }
 
@@ -168,41 +182,37 @@ h2 {
   /* background-color: rgba(255, 235, 205, 0.6); */
   background-color: whitesmoke;
 }
-
-/* main {
-  color: lawngreen
-} */
-
-/* .itin {
-  background-color: turquoise;
+/* 
+.itin {
+  background-color: yellow;
 }
 
 .itinhover:hover {
-  color: turquoise;
+  color: yellow;
 }
 
 .con {
-  background-color: deeppink;
+  background-color: rgb(255, 127, 255);
 }
 
 .conhover:hover {
-  color: deeppink;
+  color: rgb(255, 127, 255);
 }
 
 .list {
-  color: gold;
+  background-color: rgb(0, 255, 255);
 }
 
 .listhover:hover {
-  color: gold;
-}
+  color: rgb(0, 255, 255);
+} */
 
-about {
-  color: gold;
+/* about {
+  color: rgb(0, 255, 0);
 }
 
 .abouthover:hover {
-  color: gold;
+  color:  rgb(0, 255, 0);
 } */
 
 /* input {

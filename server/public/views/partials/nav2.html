@@ -1,19 +1,11 @@
 <div role="navigation" class="navbar" ng-controller="UserController as uc">
     <div class="collapse navbar-collapse">
     <ul>
-<!-- 
-      <li role="presentation" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown">Itineraries<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#/itineraries">new itinerary</a></li>
-        </ul>
-      </li> -->
-
       <li><a class="itinhover" href="#/itineraries">Itineraries</a></li>
       <li><a class="conhover" href="#/contacts">Contacts</a></li>
       <li><a class="listhover" href="#/lists">Lists</a></li>
       <li><a class="abouthover" href="#/about-auth">About</a></li>
-      <li><a ng-click="uc.userService.logout()">Logout</a></li>
+      <li class="logout"><a ng-click="uc.userService.logout()">Logout</a></li>
     </ul>
   </div>
 </div>

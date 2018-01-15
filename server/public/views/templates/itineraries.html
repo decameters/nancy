@@ -35,13 +35,13 @@
                         </td>
                     <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
                             <button class="btn-sm itin" ng-hide="itinerary.isEditable" ng-click="itinerary.isEditable = !itinerary.isEditable">edit itinerary</button>
-                            <button class="btn-sm itin" ng-show="itinerary.isEditable" ng-click="ic.editItin(itinerary)">save itinerary</button>
+                            <button class="btn-sm itin" ng-show="itinerary.isEditable" ng-click="ic.editItin(itinerary)">save changes</button>
                         </td>
                         <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
                             <button class="btn-sm itin" ng-click="ic.deleteItinerary(itinerary)">delete itinerary</button>
                         </td>
                     <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
-                        <a ng-href="#/itinerary-detail/{{itinerary.id}}"><button class="btn-sm itin">select itinerary</a></button>
+                        <a ng-href="#/itinerary-detail/{{itinerary.id}}"><button class="btn-sm itin">select itinerary</button></a>
                     </td>
                 </tr>
             </tbody>
