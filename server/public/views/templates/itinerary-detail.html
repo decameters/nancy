@@ -13,13 +13,14 @@
         <input type="number" ng-model="ic.newItem.phone" placeholder="contact phone" />
         <br>
         <br>
-        <input class="btn-sm itin" type="submit" ng-click="ic.addNewItem(ic.newItem, ic.currentItineraryId)" value="add to itinerary"
-        />
-        <a target="_blank" ng-href="{{ic.itinName.list[0].link}}">
-            <button class="btn-sm itin">
+        <input class="btn-sm itin" type="submit" ng-click="ic.addNewItem(ic.newItem, ic.currentItineraryId)" value="add to itinerary"/>
+        
+        <button class="btn-sm itin">
+            <a class="map" ng-href="{{ic.itinName.list[0].link}}" target="_blank" >
                 view google map
+                </a>
             </button>
-        </a>
+        
     </form>
     <br>
     <div class="table-container">
