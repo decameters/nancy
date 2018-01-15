@@ -6,6 +6,7 @@ myApp.controller('ContactController', function(ContactService) {
 
     vm.addNewContact = ContactService.addNewContact;
     vm.deleteContact = ContactService.deleteContact;
+    vm.editContact = ContactService.editContact;
 
     ContactService.getAllContacts();
 

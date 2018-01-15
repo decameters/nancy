@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/nav2.html'"></div>
-  <div class="main-container">
+<div class="main-container">
     <h2>{{cc.contactArray.list[0].name}}'s contacts</h2>
 
     <h3>add a new contact</h3>
@@ -13,30 +13,46 @@
     </form>
     <br>
     <h3 id="contactView">view your contacts</h3>
-    <p id="searchContactBar">search your contacts: <input ng-model="contactSearch"></p>
-
-    <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- make this a thing that actually makes sense -->
-                <!-- editable fields -->
-                <tr ng-repeat="contact in cc.contactArray.list | filter:contactSearch">
-                    <td>{{contact.person}}</td>
-                    <td>{{contact.email}}</td>
-                    <td>{{contact.phone}}</td>
-                    <td><input type="checkbox"></td>
-                    <td><button class="btn-sm" ng-click="cc.deleteContact(contact)">Delete</button></td>  
-                    <!-- make these buttons work           -->
-                </tr>
-            </tbody>
-        </table>
-  </div>
+    <p id="searchContactBar">search your contacts:
+        <input ng-model="contactSearch">
+    </p>
+    <div class="table-container">
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>CONTACT</th>
+                        <th>email</th>
+                        <th>phone</th>
+                        <th>edit / save</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="contact in cc.contactArray.list | filter:contactSearch">
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="contact.isEditable">{{contact.person}}</p>
+                            <input class="textbox" ng-show="contact.isEditable" ng-model="contact.person">
+                        </td>
+                        <td class="col-lg-3 col-md-3 col-s-3 col-xs-3">
+                            <p ng-hide="contact.isEditable">{{contact.email}}</p>
+                            <input class="textbox" ng-show="contact.isEditable" ng-model="contact.email">
+                        </td>
+                        <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
+                            <p ng-hide="contact.isEditable">{{contact.phone}}</p>
+                            <input class="textbox" ng-show="contact.isEditable" ng-model="contact.phone">
+                        </td>
+                        <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                            <button class="btn-sm" ng-hide="contact.isEditable" ng-click="contact.isEditable = !contact.isEditable">edit</button>
+                            <button class="btn-sm" ng-show="contact.isEditable" ng-click="cc.editContact(contact)">save</button>
+                        </td>
+                        <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
+                            <button class="btn-sm" ng-click="cc.deleteContact(contact)">delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </div>

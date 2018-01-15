@@ -36,7 +36,7 @@ myApp.service('ContactService', function ($http, $location) {
     self.deleteContact = function (contactToDelete) {
         $http({
             method: 'DELETE',
-            url: 'contacts/deletecontact',
+            url: '/contacts/deletecontact',
             params: contactToDelete
         }).then(function(response){
             console.log('response', response);
@@ -44,5 +44,17 @@ myApp.service('ContactService', function ($http, $location) {
         })
 
     } // end delete contact on contact view
+
+    // update contact
+    self.editContact = function (contactToEdit) {
+        $http({
+            method: 'PUT',
+            url: '/contacts/editcontact',
+            data: contactToEdit
+        }).then(function(response){
+            console.log('response', response);
+            self.getAllContacts();
+        })
+    } // end update contact
 
 });

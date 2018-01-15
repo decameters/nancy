@@ -14,7 +14,8 @@ router.get('/', function (req, res) {
             contacts.created_id, users.name, users.username
             FROM contacts 
             JOIN users on users.id = contacts.created_id
-            WHERE contacts.created_id=$1;`, [req.user.id], function (errorMakingQuery, result){
+            WHERE contacts.created_id=$1
+            ORDER BY person;`, [req.user.id], function (errorMakingQuery, result){
                 done();
                 if(errorMakingQuery){
                     console.log('error making query', errorMakingQuery);
@@ -69,5 +70,28 @@ router.delete('/deletecontact', function (req, res) {
         }
     })
 }); // end delete contact for contacts view
+
+// put route for editing contact in database
+router.put('/editcontact', function (req, res) {
+    var contactToUpdate = req.body;
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            client.query(`UPDATE contacts SET person=$1, 
+            email=$2, phone=$3 WHERE id=$4;`, 
+            [req.body.person, req.body.email, req.body.phone, req.body.con_id], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            })
+        }
+    })
+}); // end put route for editing contact in database
 
 module.exports = router;

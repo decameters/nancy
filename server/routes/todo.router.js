@@ -187,7 +187,7 @@ router.put('/edititem', function (req, res) {
                     console.log('Error making query', errorMakingQuery);
                     res.sendStatus(500);
                 } else {
-                    res.sendStatus(204);
+                    res.sendStatus(200);
                 }
             })
         }
