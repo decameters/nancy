@@ -7,7 +7,7 @@ body, html {
 
 .header h1 {
   text-decoration: none;
-  font-size: 75px;
+  font-size: 100px;
   font-weight: 600;
 }
 
@@ -16,7 +16,16 @@ body, html {
   color: #000000;
   padding-top: 15px;
   padding-left: 40px;
-  height: 150px;
+  height: 170px;
+}
+
+.n {
+  transform: skewY(-10deg);
+  transform-origin: top;
+}
+
+.n:hover {
+  color: lawngreen;
 }
 
 #entryForm {
@@ -24,7 +33,7 @@ body, html {
 }
 
 .main-container {
-  padding-top: 15px;
+  padding-top: 10px;
   padding-left: 45px;
 }
 
@@ -131,7 +140,7 @@ h2 {
 
 .headercontainer {
   display: inline-flex;
-  height: 120px;
+  height: 170px;
 }
 
 #header-text {
@@ -147,17 +156,8 @@ h2 {
   color: rgb(0, 255, 0);
   position: relative;
   padding-left: 10px;
-  top: 10%;
-  font-size: 40px;
-}
-
-.nancy-header {
-  height: 120px;
-}
-
-.nancy-header:hover {
-  background: url(nancy_greeeen.png);
-  height: 120px;
+  top: 9%;
+  font-size: 60px;
 }
 
 .btn-sm {
