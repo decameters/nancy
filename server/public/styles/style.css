@@ -69,9 +69,11 @@ body, html {
   width: 100%;
   border-radius: 0px;
   padding-left: 30px;
+  font-weight: bold;
 }
 
-.logout {
+#logout {
+  font-weight: normal;
   float: right;
 }
 

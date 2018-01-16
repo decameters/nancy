@@ -3,13 +3,10 @@ myApp.service('ToDoService', function ($http, $location) {
     var self = this;
 
     self.todoArray = { list: [] };
-    self.todo = { list: [] };
-    self.todoName = { list: [] };
 
-    // self.currentTodo = { list: [] };
-    // self.thisTodo = { list: [] };
-    // self.listTodo = { };
-    // self.Todo = { list: [] };
+    self.todo = { list: [] };
+
+    self.todoName = { list: [] };
 
     // add new todo to list view
     self.addNewTodo = function (newTodo) {
@@ -87,7 +84,7 @@ myApp.service('ToDoService', function ($http, $location) {
             method: 'DELETE',
             url: '/todo/deleteitem',
             params: itemToDelete
-        }).then(function(response){
+        }).then(function (response) {
             console.log('response', response);
             self.getListDetails(itemToDelete.id);
         })
@@ -99,7 +96,7 @@ myApp.service('ToDoService', function ($http, $location) {
             method: 'DELETE',
             url: '/todo',
             params: listToDelete
-        }).then(function(response){
+        }).then(function (response) {
             console.log('response', response);
             self.getAllTodo();
         })
@@ -112,7 +109,7 @@ myApp.service('ToDoService', function ($http, $location) {
             method: 'PUT',
             url: 'todo/packitem',
             data: itemToPack
-        }).then(function (response){
+        }).then(function (response) {
             console.log('response', response);
             self.getListDetails(itemToPack.name_id)
         })
@@ -125,37 +122,10 @@ myApp.service('ToDoService', function ($http, $location) {
             method: 'PUT',
             url: '/todo/edititem',
             data: itemToEdit
-        }).then(function(response){
+        }).then(function (response) {
             console.log('response', response);
             self.getListDetails(itemToEdit.name_id);
         })
     } // end update list item on details view
-
-
-    // // get all itinerary items
-    // self.getAllTodoItems = function () {
-    //     console.log('in getAllTodoItems');
-    //     $http({
-    //         method: 'GET',
-    //         url: '/todo/item'
-    //     }).then(function (response) {
-    //         console.log('response', response);
-    //         self.todoitem.list = response.data;
-    //     })
-    // } // end get all itinerary items
-
-    // self.getList = function (listTodo) {
-    //     console.log('get list button clicked');
-    //     console.log(listTodo);
-
-    //     $http({
-    //         method: 'GET',
-    //         url: '/todo/getlist',
-    //         params: {listTodo}
-    //     }).then(function (response){
-    //         console.log('response', response);
-    //         self.thisTodo.list = response.data;
-    //     })
-    // }
 
 });

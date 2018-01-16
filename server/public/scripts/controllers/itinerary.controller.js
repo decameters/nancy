@@ -4,8 +4,6 @@ myApp.controller('ItineraryController', ['ItineraryService', '$routeParams', fun
 
     vm.itineraryArray = ItineraryService.itineraryArray;
     vm.itinerary = ItineraryService.itinerary;
-    // vm.item = ItineraryService.item;
-    // vm.userArray = ItineraryService.userArray;
     vm.itinName = ItineraryService.itinName;
     vm.currentItineraryId = $routeParams.itinId;
     vm.thisItin = $routeParams.itinId;
@@ -18,11 +16,8 @@ myApp.controller('ItineraryController', ['ItineraryService', '$routeParams', fun
     vm.editItinItem = ItineraryService.editItinItem;
     vm.notifyUser = ItineraryService.notifyUser;
    
-    // ItineraryService.getAllItems();
     ItineraryService.getAllItineraries();
-    // ItineraryService.getUsers();
     ItineraryService.getItineraryDetails($routeParams.itinId);
     ItineraryService.getItineraryName($routeParams.itinId);
-    // vm.getAllItineraries = ItineraryService.getAllItineraries;
 
 }]);

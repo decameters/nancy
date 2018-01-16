@@ -4,8 +4,6 @@ myApp.service('ItineraryService', function ($http, $location) {
 
     self.itineraryArray = { list: [] };
 
-    // self.item = { list: [] };
-
     self.itinerary = { list: [] };
 
     self.itinName = { list: [] };
@@ -136,21 +134,10 @@ myApp.service('ItineraryService', function ($http, $location) {
         }).then(function(response){
             console.log('response'), response;
             self.getItineraryDetails(itinItemToEdit.trip_id);
-        }) // end edit itinerary item on itinerary-details view
-        
-    }
+        })
+    } // end edit itinerary item on itinerary-details view
 
-    // self.getUsers = function () {
-    //     console.log('in getUsers');
-    //     $http({
-    //         method: 'GET',
-    //         url: '/itinerary/getusers'
-    //     }).then(function(response){
-    //         console.log('response', response);
-    //         self.userArray.list = response.data;
-    //     })
-    // }
-
+    // get user info for twilio notification
     self.notifyUser = function (thisItin) {
         console.log('in notifyUser');
         $http({
@@ -162,31 +149,6 @@ myApp.service('ItineraryService', function ($http, $location) {
         }).then(function(response){
             console.log('response', response);
         })
-
-        // self.getItineraryName = function (itinId) {
-        //     $http({
-        //         method: 'GET',
-        //         url: 'itinerary/itinerarynames',
-        //         params: {
-        //             itinId: itinId
-        //         }
-        //     }).then(function (response) {
-        //         console.log('response', response);
-        //         self.itinName.list = response.data;
-        //     });
-
-
-    }
-        // // get all itinerary items on details view
-    // self.getAllItems = function () {
-    //     console.log('in getAllItems');
-    //     $http({
-    //         method: 'GET',
-    //         url: 'itinerary/item'
-    //     }).then(function (response) {
-    //         console.log('response', response);
-    //         self.item.list = response.data;
-    //     })
-    // } // end get all itinerary items on details view
+    } // end get user info for twilio notification
 
 });

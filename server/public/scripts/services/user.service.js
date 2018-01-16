@@ -20,8 +20,7 @@ myApp.service('UserService', function ($http, $location) {
       console.log('UserService -- getuser -- failure: ', response);
       $location.path("/home");
     });
-  },
-    // end user login
+  }, // end user login
 
     // user logout
     self.logout = function () {
@@ -31,6 +30,7 @@ myApp.service('UserService', function ($http, $location) {
         $location.path("/home");
         self.userObject.userName = '';
       });
-    }
+    } // end user logout
+
 });
-// end user logout
+

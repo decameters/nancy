@@ -1,11 +1,23 @@
 <div role="navigation" class="navbar" ng-controller="UserController as uc">
-    <div class="collapse navbar-collapse">
-    <ul>
-      <li><a class="itinhover" href="#/itineraries">Itineraries</a></li>
-      <li><a class="conhover" href="#/contacts">Contacts</a></li>
-      <li><a class="listhover" href="#/lists">Lists</a></li>
-      <li><a class="abouthover" href="#/about-auth">About</a></li>
-      <li class="logout"><a ng-click="uc.userService.logout()">Logout</a></li>
-    </ul>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <ul>
+        <li>
+          <a class="itinhover" href="#/itineraries">I T I N E R A R I E S</a>
+        </li>
+        <li>
+          <a class="conhover" href="#/contacts">C O N T A C T S</a>
+        </li>
+        <li>
+          <a class="listhover" href="#/lists">L I S T S</a>
+        </li>
+        <li>
+          <a class="abouthover" href="#/about-auth">A B O U T</a>
+        </li>
+        <li>
+          <a id="logout" ng-click="uc.userService.logout()">l o g o u t</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
