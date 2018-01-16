@@ -1,16 +1,16 @@
 <div ng-include="'views/partials/nav2.html'"></div>
   <div class="main-container">
-    <h2>itineraries</h2>
-    <h3>create a new itinerary</h3>
+    <h2 class="text-uppercase">itineraries</h2>
+    <h4>+ create a new itinerary</h4>
     <form novalidate class="simple-form">
       <input type="text" ng-model="ic.newItinerary.name" placeholder="name your itinerary" />
-      <input type="text" ng-model="ic.newItinerary.link" placeholder="google maps share link" />
+      <input class="map-input" type="text" ng-model="ic.newItinerary.link" placeholder="google maps share link" />
       <br>
       <br>
       <input class="btn-sm itin" type="submit" ng-click="ic.addNewItinerary(ic.newItinerary)" value="create new itinerary" />
     </form>
     <br>
-    <h3>select an itinerary</h3>
+    <h4>+ select an itinerary</h4>
     <div class="table-container">
             <div class="row">
         <table class="table table-hover">

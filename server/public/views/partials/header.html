@@ -2,7 +2,7 @@
         <div class="headercontainer">
                 <h1 class="n">N</h1><h1 class="n">A</h1><h1 class="n">N</h1><h1 class="n">C</h1><h1 class="n">Y</h1>
                 <!-- <a href="#/user"><img class="nancy-header" src="./images/nancy_newer.png"></a> -->
-                <h3 class="smile" ng-show="uc.userObject.userName">☺</h3><h4 id="header-text" ng-show="uc.userObject.userName" >hi there, {{ uc.userObject.userName }}!</h4>
-                <div ng-show="!uc.userObject.userName" ></div>
+                <h3 class="smile" ng-show="uc.userObject.userName"><a class="smile-link" href="#/user">☺</a></h3><h4 id="header-text" ng-show="uc.userObject.userName" >hi there, {{ uc.userObject.userName }}!</h4>
+                <div ng-show="!uc.userObject.userName" ><h3 class="smile"><a class="smile-link" href="#/user">☺</a></h3></div>
         </div>
 </div>

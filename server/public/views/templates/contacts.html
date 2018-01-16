@@ -1,8 +1,8 @@
 <div ng-include="'views/partials/nav2.html'"></div>
 <div class="main-container">
-    <h2>{{cc.contactArray.list[0].name}}'s contacts</h2>
+    <h2 class="text-uppercase">{{cc.contactArray.list[0].name}}'s contacts</h2>
 
-    <h3>add a new contact</h3>
+    <h4>+ add a new contact</h4>
     <form novalidate class="simple-form">
         <input type="text" ng-model="cc.newContact.person" placeholder="name" />
         <input type="email" ng-model="cc.newContact.email" placeholder="email" />
@@ -12,10 +12,10 @@
         <input class="btn-sm con" type="submit" ng-click="cc.addNewContact(cc.newContact)" value="add to contacts" />
     </form>
     <br>
-    <h3 id="contactView">view your contacts</h3>
-    <p id="searchContactBar">search your contacts:
+    <h4 id="contactView">+ view your contacts</h4>
+    <h4 id="searchContactBar">search your contacts:
         <input ng-model="contactSearch">
-    </p>
+    </h4>
     <div class="table-container">
         <div class="row">
             <table class="table table-hover">
