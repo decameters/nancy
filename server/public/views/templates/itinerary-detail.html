@@ -20,8 +20,18 @@
                 view google map
                 </a>
             </button>
-        
+            <button class="btn-sm itin" ng-hide="notifyUser" ng-click="ic.notifyUser(ic.thisItin); notifyUser = !notifyUser">turn on notifications</button>
+    <button class="btn-sm itin" ng-show="notifyUser" ng-click="notifyUser = !notifyUser">turn off notifications</button>
     </form>
+    <br>
+    <!-- <button class="btn-sm itin" ng-hide="notifyUser" ng-click="ic.notifyUser()">turn on notifications</button> -->
+    <!-- <button class="btn-sm itin" ng-if="notifyUser" ng-click="notifyUser = !notifyUser">turn off notifications</button> -->
+    <!-- <input type="checkbox" ng-click="ic.notifyUser()"/> turn on notifications -->
+    <!-- <br> -->
+    <!-- add others to receive notifications <input type="text" placeholder="XXX-XXX-XXXX">
+    <p>notify other users <p id="notify" ng-repeat="user in ic.userArray.list">
+        <input type="checkbox"/>{{user.name}}
+    </p></p> -->
     <br>
     <div class="table-container">
         <div class="row">
@@ -72,7 +82,7 @@
                         </td>
                         <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
                             <p ng-hide="item.isEditable">{{item.phone}}</p>
-                            <input class="textbox" ng-show="item.isEditable" type="number" ng-model="item.phone">
+                            <input class="textbox" ng-show="item.isEditable" type="text" ng-model="item.phone">
                         </td>
                         <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">
                             <button class="btn-sm itin" ng-hide="item.isEditable" ng-click="item.isEditable = !item.isEditable">edit</button>

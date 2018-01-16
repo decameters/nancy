@@ -1,7 +1,16 @@
+require('dotenv').config()
+
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var pool = require('../modules/pool.js');
+
+var twilio = require('twilio');
+
+var accountSid = process.env.TWILIO_ACCT_SID; // Your Account SID from www.twilio.com/console
+var authToken = process.env.TWILIO_AUTH_TOKEN;   // Your Auth Token from www.twilio.com/console
+
+var notify = new twilio(accountSid, authToken);
 
 // get all itineraries
 router.get('/', function (req, res) {
@@ -242,6 +251,72 @@ router.put('/edititinitem', function (req, res) {
         res.sendStatus(403);
     }
 }); // end put route for editing itinerary item in itinerary_item in database
+
+// // get all users for list share
+// router.get('/getusers', function (req, res) {
+//     if (req.isAuthenticated()) {
+//         pool.connect(function (errorConnectingToDatabase, client, done) {
+//             if (errorConnectingToDatabase) {
+//                 console.log('Error connecting to database', errorConnectingToDatabase);
+//                 res.sendStatus(500);
+//             } else {
+//                 client.query(`SELECT users.name FROM "users";`, function (errorMakingQuery, result) {
+//                     done();
+//                     if (errorMakingQuery) {
+//                         console.log('error making query', errorMakingQuery);
+//                         res.sendStatus(500);
+//                     } else {
+//                         res.send(result.rows);
+//                     }
+//                 })
+//             }
+//         })
+//     } else {
+//         res.sendStatus(403);
+//     }
+// }); // end get all users for list share
+
+// get notify users
+router.get('/notifyUsers', function (req, res) {
+    if (req.isAuthenticated()) {
+        var itinId = req.query.itinId
+        pool.connect(function (errorConnectingToDatabase, client, done) {
+            if (errorConnectingToDatabase) {
+                console.log('Error connecting to database', errorConnectingToDatabase);
+                res.sendStatus(500);
+            } else {
+                client.query(`SELECT itinerary_item.trip_id, itinerary_item.date, itinerary_item.city_state, itinerary_item.destination, itinerary_item.address,
+                itinerary_item.drivetime, itinerary_item.contact_id, tripnames.name AS trip_name, tripnames.link, contacts.person, contacts.email, contacts.phone,
+                users.id AS user_id, users.name, users.phone
+                FROM itinerary_item
+                JOIN tripnames ON tripnames.id = itinerary_item.trip_id
+                LEFT JOIN contacts ON contacts.id = itinerary_item.contact_id
+                JOIN users ON users.id = tripnames.created_id
+				WHERE trip_id=$1 AND tripnames.created_id=$2
+                ORDER BY date;`, [itinId, req.user.id], function (errorMakingQuery, result) {
+                    done();
+                    if (errorMakingQuery) {
+                        console.log('error making query', errorMakingQuery);
+                        res.sendStatus(500);
+                    } else {
+                        // console.log(result.rows);
+                        // console.log(result.rows[0].phone);
+                        
+                        res.send(result.rows);
+                        notify.messages
+                        .create({
+                            to: result.rows[0].phone,
+                            from: "+16124008064",
+                            body: 'Hey there, ' + result.rows[0].name + '! You\'re now receiving notifications for ' + result.rows[0].trip_name +'. Have a great trip! XO, Nancy :)'
+                        })
+                    }
+                })
+            }
+        })
+    } else {
+        res.sendStatus(403);
+    }
+}); // end notify users
 
 
 // // get all itinerary items

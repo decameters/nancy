@@ -219,6 +219,11 @@ h2 {
   color: rgb(0, 255, 255);
 }
 
+#notify {
+  float: left;
+  padding-right: 20px;
+}
+
 /* about {
   color: rgb(0, 255, 0);
 }

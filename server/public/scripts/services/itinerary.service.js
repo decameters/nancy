@@ -8,7 +8,9 @@ myApp.service('ItineraryService', function ($http, $location) {
 
     self.itinerary = { list: [] };
 
-    self.itinName = { list: [] }
+    self.itinName = { list: [] };
+
+    self.userArray = { list: [] };
 
     // add new itinerary
     self.addNewItinerary = function (newItinerary) {
@@ -138,6 +140,43 @@ myApp.service('ItineraryService', function ($http, $location) {
         
     }
 
+    // self.getUsers = function () {
+    //     console.log('in getUsers');
+    //     $http({
+    //         method: 'GET',
+    //         url: '/itinerary/getusers'
+    //     }).then(function(response){
+    //         console.log('response', response);
+    //         self.userArray.list = response.data;
+    //     })
+    // }
+
+    self.notifyUser = function (thisItin) {
+        console.log('in notifyUser');
+        $http({
+            method: 'GET',
+            url: '/itinerary/notifyusers',
+            params: {
+                itinId: thisItin
+            }
+        }).then(function(response){
+            console.log('response', response);
+        })
+
+        // self.getItineraryName = function (itinId) {
+        //     $http({
+        //         method: 'GET',
+        //         url: 'itinerary/itinerarynames',
+        //         params: {
+        //             itinId: itinId
+        //         }
+        //     }).then(function (response) {
+        //         console.log('response', response);
+        //         self.itinName.list = response.data;
+        //     });
+
+
+    }
         // // get all itinerary items on details view
     // self.getAllItems = function () {
     //     console.log('in getAllItems');
