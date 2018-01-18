@@ -30,7 +30,7 @@
                             <input class="textbox" ng-show="itinerary.isEditable" type="text" ng-model="itinerary.name">
                     </td>
                     <td class="col-lg-2 col-md-2 col-s-2 col-xs-2">
-                            <a ng-href="{{itinerary.link}}" target="_blank" ng-hide="itinerary.isEditable">{{itinerary.link}}</a>
+                            <a class="maplink"ng-href="{{itinerary.link}}" target="_blank" ng-hide="itinerary.isEditable">{{itinerary.link}}</a>
                             <input class="textbox" ng-show="itinerary.isEditable" type="link" ng-model="itinerary.link">
                         </td>
                     <td class="col-lg-1 col-md-1 col-s-1 col-xs-1">

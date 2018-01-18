@@ -32,6 +32,48 @@ h4 {
   color: lawngreen;
 }
 
+.smile-bubble {
+  font-size: 175px;
+  position: fixed;
+  top: 200px;
+  left: 10px;
+}
+
+.move-bubble {
+  position: fixed;
+  left: 200px;
+}
+
+.nancy-bubble {
+  width: 80%;
+  height: 100%;
+  background: lawngreen;
+  position: relative;
+  -moz-border-radius:    20px;
+  -webkit-border-radius: 20px;
+  border-radius:         20px;
+  padding-top: 50px;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 70px;
+}
+.nancy-bubble:before {
+  content:"";
+  position: absolute;
+  right: 100%;
+  top: 80px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-right: 26px solid lawngreen;
+  border-bottom: 13px solid transparent;
+}
+
+.nancy-welcome {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #entryForm {
   margin-top: 14px;
 }
@@ -214,6 +256,14 @@ h2 {
 }
 
 .map:visited {
+  color: black;
+}
+
+.maplink {
+  color: black;
+}
+
+.maplink:visited {
   color: black;
 }
 
