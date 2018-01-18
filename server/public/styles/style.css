@@ -29,7 +29,7 @@ h4 {
 }
 
 .n:hover {
-  color: lawngreen;
+  color:  rgb(0, 255, 0);
 }
 
 .smile-bubble {
@@ -47,7 +47,7 @@ h4 {
 .nancy-bubble {
   width: 80%;
   height: 100%;
-  background: lawngreen;
+  background:  rgb(0, 255, 0);
   position: relative;
   -moz-border-radius:    20px;
   -webkit-border-radius: 20px;
@@ -65,7 +65,7 @@ h4 {
   width: 0;
   height: 0;
   border-top: 13px solid transparent;
-  border-right: 26px solid lawngreen;
+  border-right: 26px solid  rgb(0, 255, 0);
   border-bottom: 13px solid transparent;
 }
 
