@@ -1,5 +1,5 @@
 myApp.controller('ContactController', function(ContactService) {
-    console.log('ContactController created');
+    // console.log('ContactController created');
     var vm = this;
 
     vm.contactArray = ContactService.contactArray;
