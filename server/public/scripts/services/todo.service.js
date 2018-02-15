@@ -1,5 +1,5 @@
 myApp.service('ToDoService', function ($http, $location) {
-    console.log('ToDoService Loaded');
+    // console.log('ToDoService Loaded');
     var self = this;
 
     self.todoArray = { list: [] };
@@ -10,13 +10,13 @@ myApp.service('ToDoService', function ($http, $location) {
 
     // add new todo to list view
     self.addNewTodo = function (newTodo) {
-        console.log(newTodo);
+        // console.log(newTodo);
         $http({
             method: 'POST',
             url: '/todo/add',
             data: newTodo
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             newTodo.name = '';
             self.getAllTodo();
         })
@@ -24,12 +24,12 @@ myApp.service('ToDoService', function ($http, $location) {
 
     // get all todo for list view
     self.getAllTodo = function () {
-        console.log('in getAllTodo');
+        // console.log('in getAllTodo');
         $http({
             method: 'GET',
             url: '/todo'
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.todoArray.list = response.data;
         })
     } // end get all todo for list view
@@ -43,7 +43,7 @@ myApp.service('ToDoService', function ($http, $location) {
             url: '/todo/additem',
             data: newTodoItem
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             newTodoItem.item = '';
             newTodoItem.quantity = '';
             self.getListDetails(newTodoItem.listId);
@@ -59,7 +59,7 @@ myApp.service('ToDoService', function ($http, $location) {
                 listId: listId
             }
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.todo.list = response.data;
         });
     } // end get all list details for list-detail view
@@ -73,7 +73,7 @@ myApp.service('ToDoService', function ($http, $location) {
                 listId: listId
             }
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.todoName.list = response.data;
         });
     } // end get list name on details view in h1
@@ -85,7 +85,7 @@ myApp.service('ToDoService', function ($http, $location) {
             url: '/todo/deleteitem',
             params: itemToDelete
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.getListDetails(itemToDelete.id);
         })
     } // end delete list item on details view
@@ -97,7 +97,7 @@ myApp.service('ToDoService', function ($http, $location) {
             url: '/todo',
             params: listToDelete
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.getAllTodo();
         })
     } // end delete entire list on lists view
@@ -110,7 +110,7 @@ myApp.service('ToDoService', function ($http, $location) {
             url: 'todo/packitem',
             data: itemToPack
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.getListDetails(itemToPack.name_id)
         })
     } // end pack or unpack item
@@ -123,7 +123,7 @@ myApp.service('ToDoService', function ($http, $location) {
             url: '/todo/edititem',
             data: itemToEdit
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.getListDetails(itemToEdit.name_id);
         })
     } // end update list item on details view

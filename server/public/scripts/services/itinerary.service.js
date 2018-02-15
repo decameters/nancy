@@ -1,5 +1,5 @@
 myApp.service('ItineraryService', function ($http, $location) {
-    console.log('ItineraryService Loaded');
+    // console.log('ItineraryService Loaded');
     var self = this;
 
     self.itineraryArray = { list: [] };
@@ -12,13 +12,13 @@ myApp.service('ItineraryService', function ($http, $location) {
 
     // add new itinerary
     self.addNewItinerary = function (newItinerary) {
-        console.log(newItinerary);
+        // console.log(newItinerary);
         $http({
             method: 'POST',
             url: '/itinerary/add',
             data: newItinerary
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             newItinerary.name = '';
             newItinerary.link = '';
             self.getAllItineraries();
@@ -27,12 +27,12 @@ myApp.service('ItineraryService', function ($http, $location) {
 
     // get all itineraries on itinerary view
     self.getAllItineraries = function () {
-        console.log('in getAllItineraries');
+        // console.log('in getAllItineraries');
         $http({
             method: 'GET',
             url: '/itinerary'
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.itineraryArray.list = response.data;
         })
     } // end get all itineraries on itinerery view
@@ -46,7 +46,7 @@ myApp.service('ItineraryService', function ($http, $location) {
                 itinId: itinId
             }
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.itinerary.list = response.data;
         });
     } // end get all itinerary details for details view
@@ -54,13 +54,13 @@ myApp.service('ItineraryService', function ($http, $location) {
     // add new itinerary item to details view
     self.addNewItem = function (newItem, itineraryId) {
         newItem.itinerary = itineraryId;
-        console.log(newItem);
+        // console.log(newItem);
         $http({
             method: 'POST',
             url: '/itinerary/additem',
             data: newItem
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             newItem.date = '';
             newItem.city_state = '';
             newItem.name = '';
@@ -82,7 +82,7 @@ myApp.service('ItineraryService', function ($http, $location) {
                 itinId: itinId
             }
         }).then(function (response) {
-            console.log('response', response);
+            // console.log('response', response);
             self.itinName.list = response.data;
         });
     } // end get itin name on details view in h1
@@ -94,7 +94,7 @@ myApp.service('ItineraryService', function ($http, $location) {
             url: '/itinerary/deleteitem',
             params: itemToDelete
         }).then(function(response){
-            console.log('response', response);
+            // console.log('response', response);
             self.getItineraryDetails(itemToDelete.trip_id);
         })
     } // end delete itin item on details view
@@ -106,7 +106,7 @@ myApp.service('ItineraryService', function ($http, $location) {
             url: '/itinerary',
             params: itinToDelete
         }).then(function(response){
-            console.log('response', response);
+            // console.log('response', response);
             self.getAllItineraries();
         })
     } // end delete entire itinerary on itinerary view
@@ -119,7 +119,7 @@ myApp.service('ItineraryService', function ($http, $location) {
             url: '/itinerary/edititinerary',
             data: itinToEdit
         }).then(function(response){
-            console.log('response', response);
+            // console.log('response', response);
             self.getAllItineraries();
         })
     } // end edit itinerary name on itinerary view
@@ -132,14 +132,14 @@ myApp.service('ItineraryService', function ($http, $location) {
             url: '/itinerary/edititinitem',
             data: itinItemToEdit
         }).then(function(response){
-            console.log('response'), response;
+            // console.log('response'), response;
             self.getItineraryDetails(itinItemToEdit.trip_id);
         })
     } // end edit itinerary item on itinerary-details view
 
     // get user info for twilio notification
     self.notifyUser = function (thisItin) {
-        console.log('in notifyUser');
+        // console.log('in notifyUser');
         $http({
             method: 'GET',
             url: '/itinerary/notifyusers',
@@ -147,7 +147,7 @@ myApp.service('ItineraryService', function ($http, $location) {
                 itinId: thisItin
             }
         }).then(function(response){
-            console.log('response', response);
+            // console.log('response', response);
         })
     } // end get user info for twilio notification
 

@@ -5,28 +5,28 @@ myApp.service('UserService', function ($http, $location) {
 
   // user login
   self.getuser = function () {
-    console.log('UserService -- getuser');
+    // console.log('UserService -- getuser');
     $http.get('/user').then(function (response) {
       if (response.data.username) {
         // user has a curret session on the server
         self.userObject.userName = response.data.username;
-        console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
+        // console.log('UserService -- getuser -- User Data: ', self.userObject.userName);
       } else {
-        console.log('UserService -- getuser -- failure');
+        // console.log('UserService -- getuser -- failure');
         // user has no session, bounce them back to the login page
         $location.path("/home");
       }
     }, function (response) {
-      console.log('UserService -- getuser -- failure: ', response);
+      // console.log('UserService -- getuser -- failure: ', response);
       $location.path("/home");
     });
   }, // end user login
 
     // user logout
     self.logout = function () {
-      console.log('UserService -- logout');
+      // console.log('UserService -- logout');
       $http.get('/user/logout').then(function (response) {
-        console.log('UserService -- logout -- logged out');
+        // console.log('UserService -- logout -- logged out');
         $location.path("/home");
         self.userObject.userName = '';
       });

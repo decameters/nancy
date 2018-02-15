@@ -3,8 +3,8 @@ CREATE DATABASE nancy;
 CREATE TABLE "users"
 (
 	"id" serial NOT NULL,
-	"username" serial NOT NULL UNIQUE,
-	"password" serial NOT NULL UNIQUE,
+	"username" varchar NOT NULL UNIQUE,
+	"password" varchar NOT NULL UNIQUE,
 	"name" varchar NOT NULL,
 	"phone" bigint NOT NULL,
 	CONSTRAINT users_pk PRIMARY KEY ("id")
