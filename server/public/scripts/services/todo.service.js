@@ -36,8 +36,6 @@ myApp.service('ToDoService', function ($http, $location) {
 
     // add new list item on list-details view
     self.addNewTodoItem = function (newTodoItem, listId) {
-        console.log(listId);
-        
         newTodoItem.listId = listId;
         console.log(newTodoItem);
         $http({
