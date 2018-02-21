@@ -1,6 +1,6 @@
 # NANCY
 
-One Paragraph of project description goes here. Link to the live version of the app if it's hosted on Heroku.
+A new way to organize your tour, your road trip, or your dream vacation. NANCY helps you track destinations, keep lists in order, and will send you reminders via text for upcoming itineraries.
 
 ## Built With
 
@@ -9,18 +9,15 @@ One Paragraph of project description goes here. Link to the live version of the 
 * Node.js
 * AngularJS
 * Bootstrap
+* Twilio
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-Link to software that is required to install the app (e.g. node).
-
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
-
 
 ### Installing
 
@@ -29,9 +26,11 @@ CREATE DATABASE nancy;
 ```
 Copy and paste database.sql file to set up the entire basic database structure.
 
-## Screen Shot
+## Screen Shots
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+![Home Page](/documentation/nancy-screengrab1.png)
+
+![Intinerary Detail View](/documentation/nancy-screengrab2.png)
 
 ## Documentation
 
@@ -39,20 +38,19 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ### Completed Features
 
-High level list of items completed.
-
-- [x] Feature a
-- [x] Feature b
+- [x] **Itineraries** Allows users to add new trips with individual dates, drive times, and contact info.
+- [x] **Contacts** Users can add, edit, delete and filter contacts.
+- [x] **Lists** List feature gives users an opportunity to create a list, add items and quantities, and mark it as "packed".
+- [x] **Text Notifcations** Text notifications can be enabled in order to notify users of upcoming itinerary dates, with all of the necessary contact information.
 
 ### Next Steps
 
-Features that you would like to add at some point in the future.
+- [ ] Allow users to share itineraries and lists with other users.
+- [ ] Integrate corresponding weather forecasts.
 
-- [ ] Feature c
+<!-- ## Deployment
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+Add additional notes about how to deploy this on a live system -->
 
 ## Authors
 
