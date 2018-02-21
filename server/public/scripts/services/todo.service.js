@@ -36,6 +36,8 @@ myApp.service('ToDoService', function ($http, $location) {
 
     // add new list item on list-details view
     self.addNewTodoItem = function (newTodoItem, listId) {
+        console.log(listId);
+        
         newTodoItem.listId = listId;
         console.log(newTodoItem);
         $http({
@@ -104,7 +106,7 @@ myApp.service('ToDoService', function ($http, $location) {
 
     // pack or unpack item
     self.packItem = function (itemToPack) {
-        console.log(itemToPack);
+        // console.log(itemToPack);
         $http({
             method: 'PUT',
             url: 'todo/packitem',
@@ -117,7 +119,7 @@ myApp.service('ToDoService', function ($http, $location) {
 
     // update list item on details view
     self.editItem = function (itemToEdit) {
-        console.log(itemToEdit);
+        // console.log(itemToEdit);
         $http({
             method: 'PUT',
             url: '/todo/edititem',
