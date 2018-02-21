@@ -2,6 +2,8 @@
 
 A new way to organize your tour, your road trip, or your dream vacation. NANCY helps you track destinations, keep lists in order, and will send you reminders via text for upcoming itineraries.
 
+A live demo can be found [here](http://www.nancy-forever.com).
+
 ## Built With
 
 * PostgreSQL
