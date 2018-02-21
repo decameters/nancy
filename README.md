@@ -38,10 +38,10 @@ Copy and paste database.sql file to set up the entire basic database structure.
 
 ### Completed Features
 
-- [x] **Itineraries** Allows users to add new trips with individual dates, drive times, and contact info.
-- [x] **Contacts** Users can add, edit, delete and filter contacts.
-- [x] **Lists** List feature gives users an opportunity to create a list, add items and quantities, and mark it as "packed".
-- [x] **Text Notifcations** Text notifications can be enabled in order to notify users of upcoming itinerary dates, with all of the necessary contact information.
+- [x] **Itineraries**: Allows users to add new trips with individual dates, drive times, and contact info.
+- [x] **Contacts**: Users can add, edit, delete and filter contacts.
+- [x] **Lists**: List feature gives users an opportunity to create a list, add items and quantities, and mark it as "packed".
+- [x] **Text Notifcations**: Text notifications can be enabled in order to notify users of upcoming itinerary dates, with all of the necessary contact information.
 
 ### Next Steps
 
