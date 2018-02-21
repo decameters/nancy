@@ -26,7 +26,7 @@ CREATE TABLE "itinerary_item"
 CREATE TABLE "tripnames"
 (
 	"id" serial NOT NULL,
-	"name" varchar NOT NULL UNIQUE,
+	"name" varchar NOT NULL,
 	"link" varchar,
 	"created_id" int NOT NULL,
 	CONSTRAINT tripnames_pk PRIMARY KEY ("id")
@@ -35,7 +35,7 @@ CREATE TABLE "tripnames"
 CREATE TABLE "locations"
 (
 	"id" serial NOT NULL,
-	"name" varchar NOT NULL UNIQUE,
+	"name" varchar NOT NULL,
 	"address" varchar,
 	"phone" bigint NOT NULL,
 	"city_state" varchar,
@@ -65,7 +65,7 @@ CREATE TABLE "list_items"
 CREATE TABLE "listnames"
 (
 	"id" serial NOT NULL,
-	"name" varchar NOT NULL UNIQUE,
+	"name" varchar NOT NULL,
 	"created_id" int,
 	CONSTRAINT listnames_pk PRIMARY KEY ("id")
 );
@@ -94,6 +94,7 @@ ALTER TABLE "tripnames" ADD CONSTRAINT "tripnames_fk0" FOREIGN KEY ("created_id"
 ALTER TABLE "public"."list_items" ADD CONSTRAINT "list_items_name_id_fkey" FOREIGN KEY ("name_id") REFERENCES "public"."listnames" ("id") ON DELETE CASCADE;
 
 ALTER TABLE "listnames" ADD CONSTRAINT "listnames_fk0" FOREIGN KEY ("created_id") REFERENCES "users"("id");
+ALTER TABLE "public"."list_items" ALTER COLUMN "is_packed" SET DEFAULT false;
 
 ALTER TABLE "trips_shared_with" ADD CONSTRAINT "trips_shared_with_fk0" FOREIGN KEY ("user_id") REFERENCES "users"("id");
 ALTER TABLE "trips_shared_with" ADD CONSTRAINT "trips_shared_with_fk1" FOREIGN KEY ("tripnames_id") REFERENCES "tripnames"("id");
